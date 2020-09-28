@@ -1,0 +1,23 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead th {
+  text-align: left;
+  border-bottom: 0.3rem solid var(--primary);
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #fafafa;
+  transition: 0.2s;
+}
+
+.table tbody tr:hover {
+  background-color: var(--primary-light);
+}
+
+th,
+td {
+  padding: 1rem;
+}

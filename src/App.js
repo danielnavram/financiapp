@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import { NavbarContextProvider } from "./context/NavbarContext";
+import { AuthContextProvider } from "./context/AuthContext";
+import { NotificationContextProvider } from "./context/NotificationContext";
+import Header from "./components/Header/Header";
+import Navbar from "./components/Navbar/Navbar";
+import Wrapper from "./components/Wrapper/Wrapper";
+import Notification from "./components/Notification/Notification";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthContextProvider>
+        <NotificationContextProvider>
+          <Notification />
+          <NavbarContextProvider>
+            <Header title="FinanciApp" />
+            <Navbar />
+          </NavbarContextProvider>
+          <Wrapper />
+        </NotificationContextProvider>
+      </AuthContextProvider>
     </div>
   );
 }

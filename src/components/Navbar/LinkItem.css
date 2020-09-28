@@ -1,0 +1,28 @@
+.menu {
+  margin-top: 3rem;
+  padding: 0;
+}
+
+.menu__item {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.menu__item:last-child {
+  margin-bottom: 0;
+}
+
+.menu__item i {
+  margin-right: 1rem;
+}
+
+.menu__link {
+  color: #fff;
+  transition: 0.4s ease-in-out;
+}
+
+.menu__item:hover .menu__link {
+  text-decoration: underline;
+  margin-left: 0.5rem;
+}
