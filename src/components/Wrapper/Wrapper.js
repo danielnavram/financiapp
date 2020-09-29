@@ -7,6 +7,7 @@ import RegisterPage from "../../pages/RegisterPage";
 import ResetPasswordPage from "../../pages/ResetPasswordPage";
 import Logout from "../Auth/LogoutButton";
 import Dashboard from "../Dashboard/Dashboard";
+import Home from "../../pages/HomePage";
 import ProfilePage from "../../pages/ProfilePage";
 import CategoryPage from "../../pages/CategoryPage";
 import EntriesPage from "../../pages/EntriesPage";
@@ -24,6 +25,7 @@ export default function Wrapper() {
         </>
       ) : (
         <>
+          <Route path="/" component={Home} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={RegisterPage} />
           <Route path="/resetpassword" component={ResetPasswordPage} />

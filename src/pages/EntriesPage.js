@@ -1,8 +1,11 @@
 import React from "react";
 
 import Card from "../components/Card/Card";
+import { useCategoriesList } from "../hooks/useCategoriesList";
 
 export default function EntriesPage() {
+  const categories = useCategoriesList();
+
   return (
     <Card title="Registro de movimientos financieros">
       <div className="card__form">
@@ -31,9 +34,10 @@ export default function EntriesPage() {
           </div>
           <div className="form__group">
             <select className="form__input" name="category" required>
-              <option selected disabled>
-                Categoria
-              </option>
+              <option disabled>Categoria</option>
+              {categories.map((el) => {
+                return <option key={el.id}>{el.name}</option>;
+              })}
             </select>
           </div>
           <div className="form__group input">
@@ -45,6 +49,12 @@ export default function EntriesPage() {
             />
             <label htmlFor="value" className="form__label">
               Valor
+            </label>
+          </div>
+          <div className="form__group date">
+            <input type="date" name="date" className="form__input" required />
+            <label htmlFor="date" className="form__label">
+              Fecha Registro
             </label>
           </div>
           <div className="form__group input">

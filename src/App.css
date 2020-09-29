@@ -45,6 +45,10 @@ ul {
   position: relative;
 }
 
+.form__group.date {
+  margin-top: 2rem;
+}
+
 .form__group .form__input {
   width: 100%;
   /* margin-bottom: 2rem; */
@@ -67,6 +71,10 @@ ul {
   padding: 1rem 0;
   font-size: 1.4rem;
   transition: 0.4s;
+}
+
+.form__group.date .form__label {
+  top: -2rem;
 }
 
 .form__group .form__input:focus ~ .form__label,
