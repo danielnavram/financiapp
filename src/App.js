@@ -14,12 +14,12 @@ function App() {
     <div className="App">
       <AuthContextProvider>
         <NotificationContextProvider>
-          <Notification />
           <NavbarContextProvider>
             <Header title="FinanciApp" />
             <Navbar />
           </NavbarContextProvider>
           <Wrapper />
+          <Notification />
         </NotificationContextProvider>
       </AuthContextProvider>
     </div>
