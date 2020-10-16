@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-
-import NotificationContext from "../../context/NotificationContext";
+import React from "react";
 
 import RemoveCategorie from "../Categories/RemoveCategorie";
 
@@ -8,7 +6,6 @@ export default function TableCategories({ datos }) {
   return (
     <>
       {datos.map((doc) => {
-        console.log();
         return (
           <tr key={doc.id}>
             <td>{doc.name}</td>

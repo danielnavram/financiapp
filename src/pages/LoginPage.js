@@ -7,9 +7,7 @@ import NotificationContext from "../context/NotificationContext";
 
 export default function LoginPage() {
   const [location, setLocation] = useLocation();
-  const { message, setMessage, setActive, setType } = useContext(
-    NotificationContext
-  );
+  const { setMessage, setActive, setType } = useContext(NotificationContext);
   const handleLoginForm = (e) => {
     e.preventDefault();
     const email = document.querySelector(".email").value;

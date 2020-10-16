@@ -26,6 +26,7 @@ export default function CategoryPage() {
         setMessage(
           "Su categoria ha sido guardada. Ya puede dirigirse a la ruta de entradas para registrar sus movimientos de flujo de caja"
         );
+        setData(initialState);
       })
       .catch((error) => {
         setActive(true);
@@ -50,6 +51,7 @@ export default function CategoryPage() {
             type="text"
             name="name"
             className="form__input"
+            value={data.name}
             onChange={handleChange}
             required
           />
