@@ -7,7 +7,6 @@ export const useRemoveData = () => {
   const { setActive, setType, setMessage } = useContext(NotificationContext);
 
   const removeHandler = (collection, docId) => {
-    // console.log(collection, docId);
     DB.collection(collection)
       .doc(docId)
       .delete()
