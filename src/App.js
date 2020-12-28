@@ -1,28 +1,16 @@
 import React from "react";
-import "./App.css";
 
-import { NavbarContextProvider } from "./context/NavbarContext";
-import { AuthContextProvider } from "./context/AuthContext";
-import { NotificationContextProvider } from "./context/NotificationContext";
-import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
-import Wrapper from "./components/Wrapper/Wrapper";
-import Notification from "./components/Notification/Notification";
+import { AuthContextProvider } from "context/AuthContext";
+import Routes from "components/Routes/Routes";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (
-    <div className="App">
+    <ChakraProvider>
       <AuthContextProvider>
-        <NotificationContextProvider>
-          <NavbarContextProvider>
-            <Header title="FinanciApp" />
-            <Navbar />
-          </NavbarContextProvider>
-          <Wrapper />
-          <Notification />
-        </NotificationContextProvider>
+        <Routes />
       </AuthContextProvider>
-    </div>
+    </ChakraProvider>
   );
 }
 

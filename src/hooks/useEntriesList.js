@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { DB } from "../api/config";
-import Dump from "@wesbos/dump";
 import AuthContext from "../context/AuthContext";
 
 export function useEntriesList() {

@@ -1,44 +1,28 @@
-import React, { useContext } from "react";
-import NavbarContext from "../../context/NavbarContext";
-import AuthContext from "../../context/AuthContext";
+import React from "react";
 
-import "./Header.css";
+import { Container } from "components/Container/Container";
+import { Flex } from "@chakra-ui/react";
+import { UserMenu } from "components/Header/UserMenu";
+import { Menu } from "components/Header/Menu";
+import { Logo } from "components/Header/Logo";
 
-import User from "../User/User";
+import { useAuthentication } from "hooks/useAuthentication";
 
-export default function Header({ title }) {
-  const { activeNavbar, setActiveNavbar } = useContext(NavbarContext);
-  const user = useContext(AuthContext);
-  const handleNavbar = () => {
-    if (!activeNavbar) setActiveNavbar(true);
-  };
+export default function Header() {
+  const {
+    user: { user, status },
+  } = useAuthentication();
 
   return (
-    <header className="header">
-      <div className="logo">
-        <div className="hmb" onClick={handleNavbar}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <h3 className="logo__title">
-          <a href="#titlelogo" className="logo__link">
-            {title}
-          </a>
-        </h3>
-        {user ? (
-          <User
-            name={user.displayName ? user.displayName : user.email}
-            image={
-              user.photoURL
-                ? user.photoURL
-                : "https://randomuser.me/api/portraits/lego/3.jpg"
-            }
-          />
+    <Container>
+      <Flex justify="space-between" alignItems="center">
+        <Logo>Financiapp</Logo>
+        {status === "success" ? (
+          <UserMenu name={user.displayName} img={user.photoURL} />
         ) : (
-          ""
+          <Menu />
         )}
-      </div>
-    </header>
+      </Flex>
+    </Container>
   );
 }
