@@ -7,12 +7,10 @@ import {
   DrawerOverlay,
   DrawerContent,
   useDisclosure,
-  List,
-  Link
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink } from "components/Header/NavLink";
 
 export function Navbar() {
   const { onClose, isOpen, onOpen } = useDisclosure();
@@ -30,9 +28,11 @@ export function Navbar() {
         <DrawerOverlay>
           <DrawerContent>
             <DrawerBody pt={10}>
-                <Link as={RouterLink} to="/dashboard">Dashboard</Link>
-                <Link>Categories</Link>
-                <Link>Entries</Link>
+                <NavLink to="/dashboard" onClick={onClose}>Dashboard</NavLink>
+                <NavLink to="/profile" onClick={onClose}>Profile</NavLink>
+                <NavLink to="/categories" onClick={onClose}>Categories</NavLink>
+                <NavLink to="/entries" onClick={onClose}>Entries</NavLink>
+                <NavLink to="/settings" onClick={onClose}>Settings</NavLink>
             </DrawerBody>
           </DrawerContent>
         </DrawerOverlay>

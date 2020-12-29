@@ -1,4 +1,4 @@
-import { AUTH, DB } from "./config";
+import { AUTH } from "./config";
 
 export async function register(email, password) {
   return await AUTH.createUserWithEmailAndPassword(email, password).catch(

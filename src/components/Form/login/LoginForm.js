@@ -15,7 +15,9 @@ export const LoginForm = () => {
       initialValues={{ email: "danielnavram@gmail.com", password: "1234567890" }}
       validationSchema={LoginFormValidation}
       onSubmit={({ email, password }) => {
-        setUser({ status: "success", error: null, user: login(email, password)});
+        login(email, password).then(res => {
+          setUser({ status: "success", error: null, user: res.user});
+        })
       }}
     >
       {(props) => {
