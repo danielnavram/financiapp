@@ -8,12 +8,18 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-export function InputField(props) {
+export function InputFile(props) {
   const [field, meta] = useField(props.name);
   return (
     <FormControl id={props.name} isInvalid={meta.error && meta.touched}>
       <FormLabel>{props.label}</FormLabel>
-      <Input type={props.type} {...field} {...props} />
+      <Input
+        type="file"
+        name={field.name}
+        onChange={field.onChange}
+        onBlur={field.onBlur}
+        {...props}
+      />
       <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
   );

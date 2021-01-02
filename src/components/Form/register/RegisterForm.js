@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 
 import { InputField } from "components/Form/InputField";
+import { InputFile } from "components/Form/InputFile";
 import { Box, Button } from "@chakra-ui/react";
 import { RegisterFormValidation } from "components/Form/register/RegisterFormValidation";
 import { register } from "api/authfirebase";
@@ -27,11 +28,11 @@ export const RegisterForm = () => {
             <Form>
               <InputField name="name" label="Name" type="text" />
               <InputField name="email" label="Email" type="email" />
-              <InputField name="photo" label="Photo Profile" type="file" />
+              <InputFile name="photo" label="Photo Profile" onChange={(event) => props.setFieldValue("photo", event.target.files[0])} />
               <InputField name="password" label="Password" type="password" />
               <InputField
-                name="checkpassword"
-                label="Check Password"
+                name="passwordConfirmation"
+                label="Confirm Password"
                 type="password"
               />
               <Button type="submit" mt="30px">
