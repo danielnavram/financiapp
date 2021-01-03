@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 
 import { InputField } from "components/Form/InputField";
-import { InputFile } from "components/Form/InputFile";
+// import { InputFile } from "components/Form/InputFile";
 import { Box, Button } from "@chakra-ui/react";
 import { RegisterFormValidation } from "components/Form/register/RegisterFormValidation";
 import { register } from "api/authfirebase";
@@ -13,14 +13,12 @@ export const RegisterForm = () => {
     <Formik
       initialValues={{
         name: "Daniel Navarro",
-        email: "danielnavram+test@gmail.com",
+        email: "danielnavram@gmail.com",
         password: "123456",
         passwordConfirmation: "123456",
-        photo: "",
       }}
       validationSchema={RegisterFormValidation}
       onSubmit={(data) => {
-        
         register(data);
       }}
     >
@@ -30,13 +28,13 @@ export const RegisterForm = () => {
             <Form>
               <InputField name="name" label="Name" type="text" />
               <InputField name="email" label="Email" type="email" />
-              <InputFile
+              {/* <InputFile
                 name="photo"
                 label="Photo Profile"
                 onChange={(event) =>
                   props.setFieldValue("photo", event.target.files[0])
                 }
-              />
+              /> */}
               <InputField name="password" label="Password" type="password" />
               <InputField
                 name="passwordConfirmation"
