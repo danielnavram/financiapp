@@ -51,9 +51,9 @@ export async function updateUser(data) {
 export async function resetPassword(email) {
   return await AUTH.sendPasswordResetEmail(email)
     .then(() => {
-      console.log("succes-reset", "The email has been sent");
+      return { status: "success", title: "Password Recovery", message: `The recovery password email has been sent to ${email}` }
     })
-    .catch((err) => console.log("err-reset", err.message));
+    .catch((err) => ({ status: "error", message: err.message, title: err.code }));
 }
 
 export function logout() {
