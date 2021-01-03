@@ -5,10 +5,6 @@ import { useAuthentication } from "hooks/useAuthentication";
 
 export default function PrivateRoute({ component: Component, ...rest }) {
   const { user: { status } } = useAuthentication();
-  if (status === "loading") {
-    return "Loading...";
-  }
-
   return (
     <Route
       {...rest}

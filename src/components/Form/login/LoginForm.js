@@ -3,12 +3,13 @@ import { Formik, Form } from "formik";
 import { LoginFormValidation } from "components/Form/login/LoginFormValidation";
 
 import { InputField } from "components/Form/InputField";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, useToast } from "@chakra-ui/react";
 import { login } from "api/authfirebase";
 import { useAuthentication } from "hooks/useAuthentication";
 
 export const LoginForm = () => {
   const { setUser } = useAuthentication();
+  const toast = useToast()
 
   return (
     <Formik
@@ -16,7 +17,26 @@ export const LoginForm = () => {
       validationSchema={LoginFormValidation}
       onSubmit={({ email, password }) => {
         login(email, password).then(res => {
-          setUser({ status: "success", error: null, user: res.user});
+          if (res.status === "error") {
+            toast({
+              title: res.code,
+              description: res.message,
+              status: res.status,
+              duration: 10000,
+              isClosable: true,
+              position: "bottom-left"
+            })
+          } else {
+            toast({
+              title: `Welcome ${res.user.displayName}`,
+              description: "You have been logged in correctly.",
+              status: res.status,
+              duration: 5000,
+              isClosable: true,
+              position: "bottom-left"
+            })
+            setUser({ status: "success", error: null, user: res.user});
+          }
         })
       }}
     >

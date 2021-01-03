@@ -6,20 +6,22 @@ import { InputFile } from "components/Form/InputFile";
 import { Box, Button } from "@chakra-ui/react";
 import { RegisterFormValidation } from "components/Form/register/RegisterFormValidation";
 import { register } from "api/authfirebase";
+// import { uploadProfileImage } from "api/storage";
 
 export const RegisterForm = () => {
   return (
     <Formik
       initialValues={{
-        name: "",
-        email: "",
-        password: "",
-        checkpassword: "",
+        name: "Daniel Navarro",
+        email: "danielnavram+test@gmail.com",
+        password: "123456",
+        passwordConfirmation: "123456",
         photo: "",
       }}
       validationSchema={RegisterFormValidation}
       onSubmit={(data) => {
-        console.log(data);
+        
+        register(data);
       }}
     >
       {(props) => {
@@ -28,7 +30,13 @@ export const RegisterForm = () => {
             <Form>
               <InputField name="name" label="Name" type="text" />
               <InputField name="email" label="Email" type="email" />
-              <InputFile name="photo" label="Photo Profile" onChange={(event) => props.setFieldValue("photo", event.target.files[0])} />
+              <InputFile
+                name="photo"
+                label="Photo Profile"
+                onChange={(event) =>
+                  props.setFieldValue("photo", event.target.files[0])
+                }
+              />
               <InputField name="password" label="Password" type="password" />
               <InputField
                 name="passwordConfirmation"

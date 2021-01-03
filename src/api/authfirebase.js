@@ -1,16 +1,16 @@
 import { AUTH } from "./config";
 
-export async function register(email, name, password) {
-  return await AUTH.createUserWithEmailAndPassword(email, password)
-    .then((user) => {
-      const userRegistered = AUTH.currentUser();
-      // here i'm able to add photo and name
-      userRegistered
+export function register({ email, name, password, photo }) {
+  AUTH.createUserWithEmailAndPassword(email, password)
+    .then(({ user }) => {
+      sendEmailVerify(user);
+      user
         .updateProfile({
           displayName: name,
+          photoURL: photo.url,
         })
-        .then(() => {
-          // Update success
+        .then((res) => {
+          console.log("succes-update", res);
         })
         .catch((err) => console.log(err.message));
     })
@@ -21,22 +21,15 @@ export async function register(email, name, password) {
 }
 
 export async function login(email, password) {
-  return await AUTH.signInWithEmailAndPassword(email, password).catch(
-    (error) => {
-      // Handle Errors here.
-      return error;
-    }
-  );
+  return await AUTH.signInWithEmailAndPassword(email, password)
+    .then((res) => ({ ...res, status: "success" }))
+    .catch((err) => {
+      return { ...err, status: "error" };
+    });
 }
 
-export async function authentication() {
-  return await AUTH.onAuthStateChanged((user) => {
-    return user;
-  });
-}
-
-async function sendEmailVerify() {
-  return await AUTH.currentUser()
+export async function sendEmailVerify(user) {
+  return await user
     .sendEmailVerification()
     .then(() => {
       console.log("success-email", "OK");
@@ -65,8 +58,6 @@ export async function resetPassword(email) {
 
 export function logout() {
   AUTH.signOut()
-    .then(() => {
-      console.log("success-logout", "You have been log out");
-    })
+    
     .catch((err) => console.log("err-logout", err.message));
 }

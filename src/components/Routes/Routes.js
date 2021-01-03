@@ -10,7 +10,7 @@ import DashboardPage from "pages/DashboardPage";
 import CategoriesPage from "pages/CategoriesPage";
 import Header from "components/Header/Header";
 
-export default function Wrapper() {
+export default function Routes() {
   return (
     <Router>
       <Header />
