@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { AUTH } from "../api/config";
-import { EmailVerify } from "components/Status/EmailVerify";
 import { Loading } from "components/Status/Loading";
 
 const AuthContext = React.createContext({});
@@ -34,10 +33,6 @@ export function AuthContextProvider({ children }) {
 
   if (user.status === "loading") {
     return <Loading />
-  }
-
-  if (user.status === "non-verified") {
-    return <EmailVerify />
   }
 
   return (

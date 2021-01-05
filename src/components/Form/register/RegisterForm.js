@@ -3,12 +3,13 @@ import { Formik, Form } from "formik";
 
 import { InputField } from "components/Form/InputField";
 // import { InputFile } from "components/Form/InputFile";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, toast, useToast } from "@chakra-ui/react";
 import { RegisterFormValidation } from "components/Form/register/RegisterFormValidation";
 import { register } from "api/authfirebase";
 // import { uploadProfileImage } from "api/storage";
 
 export const RegisterForm = () => {
+  const toast = useToast();
   return (
     <Formik
       initialValues={{
@@ -19,7 +20,16 @@ export const RegisterForm = () => {
       }}
       validationSchema={RegisterFormValidation}
       onSubmit={(data) => {
-        register(data);
+        register(data).then(({ status, title, message }) => {
+          toast({
+            status,
+            title,
+            description: message,
+            duration: 9000,
+            isClosable: true,
+            position: "bottom-left",
+          });
+        });
       }}
     >
       {(props) => {

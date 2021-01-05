@@ -22,26 +22,17 @@ export const LoginForm = () => {
         validationSchema={LoginFormValidation}
         onSubmit={({ email, password }) => {
           login(email, password).then((res) => {
-            if (res.status === "error") {
-              toast({
-                title: res.code,
-                description: res.message,
-                status: res.status,
-                duration: 10000,
-                isClosable: true,
-                position: "bottom-left",
-              });
-            } else {
-              toast({
-                title: `Welcome ${res.user.displayName}`,
-                description: "You have been logged in correctly.",
-                status: res.status,
-                duration: 5000,
-                isClosable: true,
-                position: "bottom-left",
-              });
+            if (res.status === "success")
               setUser({ status: "success", error: null, user: res.user });
-            }
+              
+            toast({
+              title: res.code || res.title,
+              description: res.message,
+              status: res.status,
+              duration: 9000,
+              isClosable: true,
+              position: "bottom-left",
+            });
           });
         }}
       >
