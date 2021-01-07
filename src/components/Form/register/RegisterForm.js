@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 
 import { InputField } from "components/Form/InputField";
 // import { InputFile } from "components/Form/InputFile";
-import { Box, Button, toast, useToast } from "@chakra-ui/react";
+import { Box, Button, useToast } from "@chakra-ui/react";
 import { RegisterFormValidation } from "components/Form/register/RegisterFormValidation";
 import { register } from "api/authfirebase";
 // import { uploadProfileImage } from "api/storage";

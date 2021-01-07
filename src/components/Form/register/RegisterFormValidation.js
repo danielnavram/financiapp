@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
-const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png", "image/gif"];
-const FILE_SIZE = 200 * 1024;
+// const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png", "image/gif"];
+// const FILE_SIZE = 200 * 1024;
 
 export const RegisterFormValidation = Yup.object().shape({
   name: Yup.string().required("This is a required field"),
