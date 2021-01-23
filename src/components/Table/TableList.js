@@ -8,11 +8,18 @@ import {
   Th,
   Td,
   TableCaption,
+  Button,
+  ButtonGroup,
+  Tag
 } from "@chakra-ui/react";
+import { useCategoriesList } from "hooks/useCategoriesList";
 
 import { TableActions } from "components/Table/TableActions";
+import { Loading } from "components/Status/Loading";
 
 export function TableList({ headers = {}, content = {} }) {
+  const { categories, status } = useCategoriesList();
+
   return (
     <Table variant="simple">
       <TableCaption>All your categories are here!</TableCaption>
@@ -24,13 +31,28 @@ export function TableList({ headers = {}, content = {} }) {
         </Tr>
       </Thead>
       <Tbody>
-        <Tr>
-          <Td>Food</Td>
-          <Td>2020-12-31</Td>
-          <Td>
-              <TableActions />
-          </Td>
-        </Tr>
+        {status === "success" ? (
+          categories.map((item, index) => {
+            return (
+              <Tr key={index}>
+                <Td><Tag bg={item.color}>{item.name}</Tag></Td>
+                <Td>
+                  {new Date(item.createdAt.toDate()).toLocaleDateString(
+                    "us-EN"
+                  )}
+                </Td>
+                <Td>
+                  <ButtonGroup space={"2"}>
+                    <Button size="sm">Edit</Button>
+                    <Button size="sm">Delete</Button>
+                  </ButtonGroup>
+                </Td>
+              </Tr>
+            );
+          })
+        ) : (
+          <Loading />
+        )}
       </Tbody>
     </Table>
   );

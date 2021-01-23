@@ -1,5 +1,4 @@
 import React from "react";
-
 import { AuthContextProvider } from "context/AuthContext";
 import Routes from "components/Routes/Routes";
 import { ChakraProvider } from "@chakra-ui/react";
