@@ -13,7 +13,9 @@ export function useCategoriesList() {
       .where("userId", "==", user.uid)
       .onSnapshot((doc) => {
         const datos = [];
-        doc.forEach((cat) => datos.push(cat.data()));
+        doc.forEach((cat) => {
+          datos.push({...cat.data(), id: cat.id})
+        });
         setData({ categories: datos, status: "success" });
       });
   }, []);

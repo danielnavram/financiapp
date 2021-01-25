@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Formik, Form } from "formik";
 import { CategoriesFormValidation } from "components/Form/categories/CategoriesFormValidation";
-
+import { useToast } from "@chakra-ui/react"
 import { ColorPicker } from "components/Form/categories/ColorPicker";
 import { InputField } from "components/Form/InputField";
 import { Box, Button } from "@chakra-ui/react";
@@ -9,6 +9,7 @@ import { createCategory } from "api/api";
 import { useAuthentication } from "hooks/useAuthentication";
 
 export const CategoriesForm = () => {
+  const toast = useToast();
   const [colorPicker, setColorPicker] = useState({ color: "#FFCF00" });
   const {
     user: { user },
@@ -28,7 +29,16 @@ export const CategoriesForm = () => {
           createdAt: new Date(),
           userId: user.uid,
           color: colorPicker.color,
-        }).then((res) => console.log(res));
+        }).then(({status, title, message}) => {
+          toast({
+            title,
+            description: message,
+            status,
+            duration: 9000,
+            isClosable: true,
+            position: "bottom-left",
+          });
+        });
       }}
     >
       {(props) => {

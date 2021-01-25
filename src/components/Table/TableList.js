@@ -10,15 +10,30 @@ import {
   TableCaption,
   Button,
   ButtonGroup,
-  Tag
+  Tag,
+  useToast,
 } from "@chakra-ui/react";
 import { useCategoriesList } from "hooks/useCategoriesList";
+import { deleteCategory } from "api/api";
 
-import { TableActions } from "components/Table/TableActions";
 import { Loading } from "components/Status/Loading";
 
 export function TableList({ headers = {}, content = {} }) {
   const { categories, status } = useCategoriesList();
+  const toast = useToast();
+
+  const handleDeleteCategory = (id) => {
+    deleteCategory(id).then(({title, message, status}) =>
+      toast({
+        title,
+        description: message,
+        status,
+        duration: 9000,
+        isClosable: true,
+        position: "bottom-left",
+      })
+    );
+  };
 
   return (
     <Table variant="simple">
@@ -35,7 +50,9 @@ export function TableList({ headers = {}, content = {} }) {
           categories.map((item, index) => {
             return (
               <Tr key={index}>
-                <Td><Tag bg={item.color}>{item.name}</Tag></Td>
+                <Td>
+                  <Tag bg={item.color}>{item.name}</Tag>
+                </Td>
                 <Td>
                   {new Date(item.createdAt.toDate()).toLocaleDateString(
                     "us-EN"
@@ -44,7 +61,12 @@ export function TableList({ headers = {}, content = {} }) {
                 <Td>
                   <ButtonGroup space={"2"}>
                     <Button size="sm">Edit</Button>
-                    <Button size="sm">Delete</Button>
+                    <Button
+                      size="sm"
+                      onClick={() => handleDeleteCategory(item.id)}
+                    >
+                      Delete
+                    </Button>
                   </ButtonGroup>
                 </Td>
               </Tr>
