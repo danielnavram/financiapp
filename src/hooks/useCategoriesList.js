@@ -18,7 +18,7 @@ export function useCategoriesList() {
         });
         setData({ categories: datos, status: "success" });
       });
-  }, []);
+  }, [user.uid]);
 
   return { ...data, setData };
 }
