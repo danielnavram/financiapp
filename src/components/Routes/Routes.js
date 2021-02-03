@@ -8,6 +8,7 @@ import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";
 import DashboardPage from "pages/DashboardPage";
 import CategoriesPage from "pages/CategoriesPage";
+import EntriesHistoryPage from "pages/EntriesHistoryPage";
 // import ProfilePage from "pages/ProfilePage";
 import Header from "components/Header/Header";
 import ResetPasswordPage from "pages/ResetPasswordPage";
@@ -23,6 +24,7 @@ export default function Routes() {
       <PrivateRoute path="/dashboard" component={DashboardPage} />
       <PrivateRoute path="/categories" component={CategoriesPage} />
       {/* <PrivateRoute path="/profile" component={ProfilePage} /> */}
+      <PrivateRoute path="/entries" component={EntriesHistoryPage} />
     </Router>
   );
 }
