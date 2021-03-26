@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'financiapp';
+  src:  url('../../fonts/financiapp.eot?upwt83');
+  src:  url('../../fonts/financiapp.eot?upwt83#iefix') format('embedded-opentype'),
+    url('../../fonts/financiapp.ttf?upwt83') format('truetype'),
+    url('../../fonts/financiapp.woff?upwt83') format('woff'),
+    url('../../fonts/financiapp.svg?upwt83#financiapp') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'financiapp' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bar-chart:before {
+  content: "\e900";
+}
+.icon-chat:before {
+  content: "\e901";
+}
+.icon-date:before {
+  content: "\e902";
+}
+.icon-document:before {
+  content: "\e903";
+}
+.icon-edit:before {
+  content: "\e904";
+}
+.icon-email:before {
+  content: "\e905";
+}
+.icon-money:before {
+  content: "\e906";
+}
+.icon-more:before {
+  content: "\e907";
+}
+.icon-notification:before {
+  content: "\e908";
+}
+.icon-options:before {
+  content: "\e909";
+}
+.icon-plus:before {
+  content: "\e90a";
+}
+.icon-record:before {
+  content: "\e90b";
+}
+.icon-schedule:before {
+  content: "\e90c";
+}
+.icon-select:before {
+  content: "\e90d";
+}
+.icon-trash:before {
+  content: "\e90e";
+}

@@ -1,0 +1,23 @@
+.card {
+    width: 100%;
+    border-radius: rem(5);
+    box-shadow: 0 rem(4) rem(4) rgba(0,0,0,.25);
+    margin-bottom: rem(20);
+    background-color: #fff;
+    &__title {
+        padding: rem(20) rem(25);
+        font-size: rem(20);
+        line-height: rem(22);
+        color: $black-contrast;
+        &--border {
+            border-bottom: rem(1) solid #CBCBCB;
+            margin-bottom: rem(20);
+        }
+    }
+    &--black {
+        background-color: $black-contrast;
+    }
+    &__body {
+        width: 100%;
+    }
+}
