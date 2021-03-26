@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { ResetPasswordValidation } from "components/Form/login/ResetPasswordValidation";
 
-import { InputField } from "components/Form/InputField";
+import { InputField } from "components/Common";
 import { Box, Button, useToast } from "@chakra-ui/react";
 import { resetPassword } from "api/authfirebase";
 
