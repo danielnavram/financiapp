@@ -69,18 +69,6 @@ export const SelectField = ({ name, label, iconName, options, ...rest }) => {
       <FormLabel fontSize={14}>{label}</FormLabel>
       <InputLeftElement children={<Icon name={iconName} />} />
       <Select styles={customStyles} options={options} name={name} {...rest} />
-      {/* <Flex name={name} className="select" columns="true">
-        <Box className="select__list">
-          {options &&
-            options.map((obj) => (
-              <Box
-                className="select__item"
-                value={obj.label}
-                onClick={() => setSelectedValue(obj)}
-              >{obj.value}</Box>
-            ))}
-        </Box>
-      </Flex> */}
       <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
   );  
