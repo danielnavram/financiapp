@@ -8,13 +8,12 @@ import {
   Th,
   Td,
   TableCaption,
-  Button,
   ButtonGroup,
-  Tag,
   useToast,
 } from "@chakra-ui/react";
 import { useCategoriesList } from "hooks/useCategoriesList";
 import { deleteCategory } from "api/api";
+import { DropdownMenu, Tag, Icon } from "components/Common";
 
 import { Loading } from "components/Status/Loading";
 
@@ -23,7 +22,7 @@ export function TableList({ headers = {}, content = {} }) {
   const toast = useToast();
 
   const handleDeleteCategory = (id) => {
-    deleteCategory(id).then(({title, message, status}) =>
+    deleteCategory(id).then(({ title, message, status }) =>
       toast({
         title,
         description: message,
@@ -34,11 +33,10 @@ export function TableList({ headers = {}, content = {} }) {
       })
     );
   };
-
   return (
-    <Table variant="simple">
+    <Table variant="simple" className="table">
       <TableCaption>All your categories are here!</TableCaption>
-      <Thead>
+      <Thead className="table__header">
         <Tr>
           {headers.map((item, index) => (
             <Th key={index}>{item}</Th>
@@ -51,29 +49,39 @@ export function TableList({ headers = {}, content = {} }) {
             return (
               <Tr key={index}>
                 <Td>
-                  <Tag bg={item.color}>{item.name}</Tag>
+                  <Tag color={item.color}>{item.name}</Tag>
                 </Td>
                 <Td>
                   {new Date(item.createdAt.toDate()).toLocaleDateString(
                     "us-EN"
                   )}
                 </Td>
-                <Td>
+                <Td className="table__column">
                   <ButtonGroup space={"2"}>
-                    <Button size="sm">Edit</Button>
-                    <Button
-                      size="sm"
-                      onClick={() => handleDeleteCategory(item.id)}
-                    >
-                      Delete
-                    </Button>
+                    <DropdownMenu
+                      button={<Icon name={"more"} size={"20px"} />}
+                      items={[
+                        {
+                          name: "Delete",
+                          icon: <Icon name="trash" />,
+                          onClick: () => handleDeleteCategory(item.id)
+                        },
+                        {
+                          name: "Modify",
+                        }
+                      ]}
+                    />
                   </ButtonGroup>
                 </Td>
               </Tr>
             );
           })
         ) : (
-          <Loading />
+          <Tr>
+            <Td colSpan={"4"}>
+              <Loading />
+            </Td>
+          </Tr>
         )}
       </Tbody>
     </Table>
