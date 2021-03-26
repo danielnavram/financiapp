@@ -3,8 +3,8 @@ import { Link as RouterLink } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { LoginFormValidation } from "components/Form/login/LoginFormValidation";
 
-import { InputField } from "components/Form/InputField";
-import { Box, Button, useToast, Link } from "@chakra-ui/react";
+import { Flex, FlexItem, Button, InputField } from "components/Common";
+import { useToast, Link } from "@chakra-ui/react";
 import { login } from "api/authfirebase";
 import { useAuthentication } from "hooks/useAuthentication";
 
@@ -24,7 +24,7 @@ export const LoginForm = () => {
           login(email, password).then((res) => {
             if (res.status === "success")
               setUser({ status: "success", error: null, user: res.user });
-              
+
             toast({
               title: res.code || res.title,
               description: res.message,
@@ -38,23 +38,27 @@ export const LoginForm = () => {
       >
         {(props) => {
           return (
-            <Box m="0 auto" w={["100%", "100%", "50%"]}>
-              <Form>
-                <InputField name="email" label="Email" type="text" />
-                <InputField name="password" label="Password" type="password" />
-                <Button type="submit" mt="30px">
-                  Log In
-                </Button>
-              </Form>
-            </Box>
+            <Flex justifycontent="true">
+              <FlexItem lg={"4"}>
+                <Form>
+                  <InputField name="email" label="Email" type="text" />
+                  <InputField
+                    name="password"
+                    label="Password"
+                    type="password"
+                  />
+                  <Button type="submit" variant="primary" name="Log in" />
+                </Form>
+              </FlexItem>
+            </Flex>
           );
         }}
       </Formik>
-      <Box>
+      <Flex>
         <Link as={RouterLink} to="/reset-password">
           Do you forget your password?
         </Link>
-      </Box>
+      </Flex>
     </>
   );
 };

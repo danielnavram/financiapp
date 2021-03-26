@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form } from "formik";
 
-import { InputField } from "components/Form/InputField";
+import { InputField } from "components/Common";
 // import { InputFile } from "components/Form/InputFile";
 import { Box, Button, useToast } from "@chakra-ui/react";
 import { RegisterFormValidation } from "components/Form/register/RegisterFormValidation";
