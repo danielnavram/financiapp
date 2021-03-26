@@ -1,16 +1,16 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
-import { Navbar } from "components/Header/Navbar";
-import { Box, Heading } from "@chakra-ui/react";
 
-export function Logo({ children }) {
+export function Logo({ name, center }) {
   return (
-    <Box p="2" d="flex" alignItems="center">
-      <Navbar />
-      <Heading fontSize={{ base: "1.5em", lg: "2em", xl: "2em" }}>
-        <Link to="/">{ children }</Link>
-      </Heading>
-    </Box>
+    <div className={center && "nav__logo-container"}>
+      <Link className="nav__logo" to="/overview">
+        <img
+          className="nav__image"
+          src="assets/images/financiapp.svg"
+          alt="Financiapp Logo"
+        />
+      </Link>
+    </div>
   );
 }

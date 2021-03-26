@@ -1,0 +1,10 @@
+.subtitle {
+    background-color: $black-contrast;
+    padding: rem(20) 0;
+    margin-bottom: rem(40);
+    &__heading {
+        color: $gray-light;
+        line-height: rem(26);
+        font-size: rem(24);
+    }
+}

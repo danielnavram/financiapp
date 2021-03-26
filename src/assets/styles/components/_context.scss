@@ -1,0 +1,66 @@
+.context {
+    position: relative;
+    @mixin item() {
+        display: flex;
+        align-items: center;
+        padding: rem(9) rem(20);
+        border-bottom: rem(1) solid $gray-light;
+        transition: all .2s ease-in;
+        cursor: pointer;
+    }
+    @mixin anchor($color) {
+        font-size: rem(14);
+        line-height: rem(22);
+        text-align: left;
+        color: $color;
+    }
+    &--dark{
+        background: $black-contrast;
+    }
+    &--dark &__item {
+        a {
+            @include anchor($gray-light);
+        }
+        &:hover {
+            background-color: hue($black-contrast);
+            a {
+                color: $blue-light;
+            }
+        }
+    }
+    &__list {
+        list-style: none;
+        position: absolute;
+        top: 110%;
+        right: 0;
+        background: white;
+        box-shadow: 0 rem(4) rem(4) 0 rgba(0,0,0,0.25);
+        border-radius: rem(5);
+        min-width: rem(150);
+        z-index: 2;
+    }
+    &__item {
+        @include item();
+        a {
+            @include anchor($black-contrast);
+            span {
+                margin-right: rem(15);
+                align-self: center;
+            }
+        }
+        &:hover {
+            background-color: $black-contrast;
+            a {
+                color: $gray-light;
+            }
+        }
+    }
+    &__button {
+        outline: none;
+        border-radius: rem(5);
+        transition: all .2s ease;
+        &:hover {
+            background: $gray-light;
+        }
+    }
+}

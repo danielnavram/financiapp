@@ -1,28 +1,47 @@
 import React from "react";
-
-import { Container } from "components/Container/Container";
-import { Flex } from "@chakra-ui/react";
-import { UserMenu } from "components/Header/UserMenu";
-import { Menu } from "components/Header/Menu";
+import { Flex, NavLink, Icon, Avatar } from "components/Common";
+import { useAuthentication } from "hooks/useAuthentication";
 import { Logo } from "components/Header/Logo";
 
-import { useAuthentication } from "hooks/useAuthentication";
-
-export default function Header() {
+export const Header = () => {
   const {
-    user: { user, status },
+    user: { user },
   } = useAuthentication();
 
   return (
-    <Container>
-      <Flex justify="space-between" alignItems="center">
-        <Logo>Financiapp</Logo>
-        {status === "success" ? (
-          <UserMenu name={user.displayName} img={user.photoURL} />
-        ) : (
-          <Menu />
-        )}
+    <div className="nav">
+      <Flex spacebetween="true" fullWidth="true" aligncenter="true">
+        <Logo />
+        <nav className="nav__menu">
+          <ul>
+            <li className="nav__item active">
+              <NavLink className="nav__link" to="/overview">
+                Overview
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink className="nav__link" to="/transactions">
+                Transactions
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink className="nav__link" to="/categories">
+                Categories
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink className="nav__link" to="/budget">
+                Budget
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <div className="user">
+          <Icon className="user__icon" name="notification" size={"24px"} />
+          <Icon className="user__icon" name="chat" size={"24px"} />
+          <Avatar url={user.photoURL || "assets/images/user.png"} alt={user.displayName} />
+        </div>
       </Flex>
-    </Container>
+    </div>
   );
 }

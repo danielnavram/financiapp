@@ -1,0 +1,59 @@
+.nav {
+    background-color: $gray-light;
+    padding: rem(20);
+    &__menu {
+        ul {
+            list-style: none;
+            display: flex;
+        }
+    }
+    &__item {
+        margin-right: rem(30);
+        position: relative;
+        &::after {
+            content: "";
+            width: rem(5);
+            height: rem(5);
+            background-color: $black-contrast;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -120%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: all .2s ease-in;
+        }
+        &:hover::after, &.active::after {
+            bottom: -60%;
+            opacity: 1;
+        }
+    }
+    &__link {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__logo-container {
+        max-width: 20%;
+        margin: rem(60) auto rem(100);
+    }
+
+    &__logo {
+        margin: 0 auto;
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    .user{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &__icon{
+            margin-right: rem(30);
+        }
+    }
+    
+}

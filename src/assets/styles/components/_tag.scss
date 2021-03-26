@@ -1,0 +1,13 @@
+.tag {
+    border-radius: rem(5);
+    padding: rem(6) rem(18);
+    color: $black-contrast;
+    font-size: rem(12);
+    font-weight: 400;
+    text-transform: uppercase;
+    display: inline-block;
+    max-width: rem(150);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

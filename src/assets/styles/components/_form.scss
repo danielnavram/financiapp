@@ -1,0 +1,20 @@
+.form {
+  width: 100%;
+  &__content {
+    padding-right: rem(20);
+    padding-left: rem(20);
+    padding-bottom: rem(20);
+  }
+}
+
+.select {
+  > div {
+    background-color: rgba($gray-light, 0.3);
+    border: 2px solid;
+    border-color: rgba($black-contrast, 0.3);
+    border-radius: rem(5);
+    height: 2.5rem;
+    padding: 0 rem(16);
+    width: 100%;
+  }
+}

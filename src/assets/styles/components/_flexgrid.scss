@@ -1,0 +1,25 @@
+.grid {
+    @include grid-base($desk-grid-width);
+    &-0 {
+        @include grid-base(100%);
+    }
+    &--space-between {
+        justify-content: space-between;
+    }
+    &--space-around {
+        justify-content: space-around;
+    }
+    &--align-center{
+        align-items: center;
+    }
+    &--justify-center{
+        justify-content: center;
+    }
+    &--horizontal {
+        flex-direction: column;
+    }
+}
+
+.col {
+    @include columns-loop(desk, $grid-desktop-columns, $desk-gutter);
+}
