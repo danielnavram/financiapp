@@ -1,11 +1,18 @@
-import React from "react";
-import { Flex, FlexItem, Card, Button, Icon, Modal, InputField } from "components/Common";
+import React, { useRef } from "react";
+import { Flex, FlexItem, Card, Button, Icon, Modal } from "components/Common";
 import { Layout } from "components/Layout";
 import { useDisclosure } from "@chakra-ui/react";
 import { TransactionsForm } from "components/Form/transactions/TransactionsForm";
 
 export default function TransactionsPage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const transactionsRef = useRef();
+  const handleSubmit = () => {
+    if (transactionsRef.current) {
+      transactionsRef.current.submitForm();
+      onClose();
+    }
+  };
 
   return (
     <Layout user="true">
@@ -26,8 +33,13 @@ export default function TransactionsPage() {
           >
             Transaction goes here
           </Card>
-          <Modal isOpen={isOpen} onClose={onClose} title="New Record">
-            <TransactionsForm />
+          <Modal
+            isOpen={isOpen}
+            onClose={onClose}
+            title="New Record"
+            handleSubmit={handleSubmit}
+          >
+            <TransactionsForm ref={transactionsRef} />
           </Modal>
         </FlexItem>
         <FlexItem lg={4}>

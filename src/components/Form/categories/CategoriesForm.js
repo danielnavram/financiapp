@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import { Formik, Form } from "formik";
 import { CategoriesFormValidation } from "components/Form/categories/CategoriesFormValidation";
 import { useToast } from "@chakra-ui/react";
@@ -8,18 +8,13 @@ import { Flex, FlexItem, InputField } from "components/Common";
 
 export const CategoriesForm = forwardRef(({ ...rest }, ref) => {
   const toast = useToast();
-  // const [colorPicker, setColorPicker] = useState({ color: "#FFCF00" });
   const {
     user: { user },
   } = useAuthentication();
 
-  // const handleColorPicker = (color) => {
-  //   setColorPicker(color);
-  // };
-
   return (
     <Formik
-      initialValues={{ name: "Food" }}
+      initialValues={{ name: "" }}
       validationSchema={CategoriesFormValidation}
       innerRef={ref}
       onSubmit={(data) => {
@@ -46,14 +41,14 @@ export const CategoriesForm = forwardRef(({ ...rest }, ref) => {
             <div className="form__content">
               <Flex fullWidth="true">
                 <FlexItem lg={"6"}>
-                  <InputField name="name" label="Category Name" type="text" />
+                  <InputField label="Category Name" name="name" type="text" />
                 </FlexItem>
                 <FlexItem lg={"6"}>
-                  <InputField name="color" label="Choose a color" type="color" />
-                  {/* <ColorPicker
-                    colorSelector={handleColorPicker}
-                    defaultColor={colorPicker}
-                  /> */}
+                  <InputField
+                    label="Choose a color"
+                    name="color"
+                    type="color"
+                  />
                 </FlexItem>
               </Flex>
             </div>

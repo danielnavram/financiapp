@@ -6,5 +6,4 @@ export const TransactionsFormValidation = Yup.object().shape({
   category: Yup.string().required("This is a required field"),
   value: Yup.string().required("This is a required field"),
   description: Yup.string().required("This is a required field"),
-  attachment: Yup.string().required("This is a required field"),
 });
