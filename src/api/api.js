@@ -2,12 +2,14 @@ import { DB } from "./config";
 
 export const createCategory = async (data) => {
   return await DB.collection("categorias")
-    .add(data)
+    .doc()
+    .set(data)
     .then(() => ({
       status: "success",
       title: "Category created",
       message: `The category ${data.name} was created successfully`,
-    })).catch(err => ({
+    }))
+    .catch((err) => ({
       status: "error",
       title: err.code,
       message: err.message,
@@ -58,4 +60,19 @@ export const validateDuplicates = async ({
         return item.data();
       });
     });
+};
+
+export const createRecord = async (data) => {
+  return await DB.collection("records")
+    .add({ ...data })
+    .then(() => ({
+      status: "success",
+      title: "Record was created",
+      message: `The record ${data.title} was created successfully`,
+    }))
+    .catch((err) => ({
+      status: "error",
+      title: err.code,
+      message: err.message,
+    }));
 };

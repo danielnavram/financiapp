@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Select from "react-select";
-import { Icon, Flex } from "components/Common";
+import { Icon } from "components/Common";
 import { useField } from "formik";
 import {
   FormControl,
@@ -8,7 +8,6 @@ import {
   FormErrorMessage,
   FormLabel,
   Input as InputChakra,
-  Box,
 } from "@chakra-ui/react";
 
 export const InputField = ({
@@ -47,41 +46,49 @@ export const InputField = ({
   );
 };
 
-export const SelectField = ({ name, label, iconName, options, ...rest }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [field, meta] = useField(name);
-  const [selectedValue, setSelectedValue] = useState(null);
+export const SelectField = ({
+  name,
+  label,
+  iconName,
+  options,
+  onChange,
+  value,
+  ...rest
+}) => {
+  const [field, meta, helpers] = useField(name);
   const customStyles = {
     control: (provided, state) => ({
       backgroundColor: "rgba(219,222,226,0.3)",
       border: "2px solid",
-      borderColor: state.isFocused ? "rgba(15,13,28,0.7)" : "rgba(15,13,28,0.3)",
+      borderColor: state.isFocused
+        ? "rgba(15,13,28,0.7)"
+        : "rgba(15,13,28,0.3)",
       borderRadius: "5px",
       display: "flex",
       height: "2.5rem",
       maxWidth: "100%",
       padding: "0 6px",
-    })
-  }
+    }),
+  };
+
+  const defaultValue = (options, value) => {
+    return options ? options.find((option) => option.value === value) : "";
+  };
 
   return (
     <FormControl id={name} isInvalid={meta.error && meta.touched}>
       <FormLabel fontSize={14}>{label}</FormLabel>
       <InputLeftElement children={<Icon name={iconName} />} />
-      <Select styles={customStyles} options={options} name={name} {...rest} />
-      {/* <Flex name={name} className="select" columns="true">
-        <Box className="select__list">
-          {options &&
-            options.map((obj) => (
-              <Box
-                className="select__item"
-                value={obj.label}
-                onClick={() => setSelectedValue(obj)}
-              >{obj.value}</Box>
-            ))}
-        </Box>
-      </Flex> */}
+      <Select
+        {...field}
+        {...rest}
+        name={name}
+        options={options}
+        onChange={(value) => onChange(value)}
+        styles={customStyles}
+        value={defaultValue(options, value)}
+      />
       <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
-  );  
+  );
 };
