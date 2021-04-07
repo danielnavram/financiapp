@@ -14,7 +14,7 @@ export function useCategoriesList() {
       .onSnapshot((doc) => {
         const datos = [];
         doc.forEach((cat) => {
-          datos.push({...cat.data(), id: cat.id})
+          datos.push({...cat.data(), id: cat.id, label: cat.data().name, value: cat.data().name})
         });
         setData({ categories: datos, status: "success" });
       });

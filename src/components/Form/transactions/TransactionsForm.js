@@ -6,25 +6,14 @@ import { createRecord, getCategories } from "api/api";
 import { useAuthentication } from "hooks/useAuthentication";
 import { Flex, FlexItem, InputField, SelectField } from "components/Common";
 import { DB } from "../../../api/config";
+import { useCategoriesList } from "hooks/useCategoriesList";
 
 export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
   const toast = useToast();
   const {
     user: { user },
   } = useAuthentication();
-  const [handleCategories, setCategories] = useState();
-
-  useEffect(() => {
-    DB.collection("categorias")
-      .where("userId", "==", user.uid)
-      .onSnapshot((doc) => {
-        let categories = [];
-        return doc.forEach((cat) => {
-          categories.push({ value: cat.data().name, label: cat.data().name });
-          setCategories(categories);
-        });
-      });
-  }, []);
+  const { categories } = useCategoriesList();
 
   return (
     <Formik
@@ -58,7 +47,6 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
       }}
     >
       {(props) => {
-        console.log(props);
         return (
           <Form className="form">
             <div className="form__content">
@@ -69,7 +57,7 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
                     type="text"
                     name="category"
                     label="Categories"
-                    options={handleCategories}
+                    options={categories}
                     onChange={(value) =>
                       props.setFieldValue("category", value.value)
                     }
