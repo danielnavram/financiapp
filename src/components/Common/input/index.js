@@ -5,7 +5,6 @@ import { useField } from "formik";
 import {
   FormControl,
   InputLeftElement,
-  FormErrorMessage,
   FormLabel,
   Input as InputChakra,
 } from "@chakra-ui/react";
@@ -41,7 +40,6 @@ export const InputField = ({
         {...field}
         {...rest}
       />
-      <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
   );
 };
@@ -88,7 +86,6 @@ export const SelectField = ({
         styles={customStyles}
         value={defaultValue(options, value)}
       />
-      <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
   );
 };
