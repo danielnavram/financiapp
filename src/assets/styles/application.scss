@@ -10,14 +10,15 @@
 @import "mixins/rem";
 
 // componentes and modules
-@import "components/fonts";
-@import "components/flexgrid";
-@import "components/nav";
 @import "components/avatar";
-@import "components/context";
-@import "components/subtitle";
 @import "components/card";
+@import "components/context";
+@import "components/flexgrid";
+@import "components/fonts";
 @import "components/form";
+@import "components/modal";
+@import "components/nav";
+@import "components/record";
+@import "components/subtitle";
 @import "components/table";
 @import "components/tag";
-@import "components/modal";

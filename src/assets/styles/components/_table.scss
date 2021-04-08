@@ -1,18 +1,31 @@
 .table {
-    &__header {
-        background-color: $gray-light;
-        tr {
-            border-bottom: rem(1) solid #CBCBCB;
-            border-top: rem(1) solid #CBCBCB;
-            th {
-                padding-top: rem(18);
-                padding-bottom: rem(18);
-                color: #737373;
-                font-size: rem(14);
-            }
-        }
+  &__header {
+    background-color: $gray-light;
+    tr {
+      border-bottom: rem(1) solid #cbcbcb;
+      border-top: rem(1) solid #cbcbcb;
+      th {
+        padding-top: rem(18);
+        padding-bottom: rem(18);
+        color: #737373;
+        font-size: rem(14);
+      }
     }
-    &__link {
-        position: relative;
+  }
+  &__link {
+    position: relative;
+  }
+
+  tr {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .selected,
+  tr:hover {
+    background-color: $black-contrast;
+    td {
+      color: $gray-light;
     }
+  }
 }

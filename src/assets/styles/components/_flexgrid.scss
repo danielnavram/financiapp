@@ -15,6 +15,9 @@
     &--justify-center{
         justify-content: center;
     }
+    &--justify-end{
+        align-content: flex-end;
+    }
     &--horizontal {
         flex-direction: column;
     }
