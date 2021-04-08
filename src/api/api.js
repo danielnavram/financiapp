@@ -76,3 +76,23 @@ export const createRecord = async (data) => {
       message: err.message,
     }));
 };
+
+export const deleteRecord = async (id) => {
+  return await DB.collection("records")
+    .doc(id)
+    .delete()
+    .then(function () {
+      return {
+        status: "success",
+        title: "Record deleted",
+        message: "The records was delete successfully",
+      };
+    })
+    .catch(function (err) {
+      return {
+        status: "error",
+        title: err.code,
+        message: err.message,
+      };
+    });
+};

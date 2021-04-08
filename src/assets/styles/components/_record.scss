@@ -1,0 +1,27 @@
+.record {
+    padding: 0 rem(25);
+    width: 100%;
+
+    &__item {
+        padding-bottom: rem(20);
+    }
+
+    &__title {
+        color: #000000;
+        line-height: rem(20);
+        letter-spacing: -0.05em;
+        margin-bottom: rem(7);
+        text-transform: capitalize;
+    }
+
+    &__value {
+        color: #737373;
+        font-size: rem(16);
+        letter-spacing: -0.05em;
+        line-height: rem(20);
+    }
+
+    &--date {
+        text-align: right;;
+    }
+}
