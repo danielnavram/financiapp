@@ -1,3 +1,4 @@
+export * from "components/Common/alert";
 export * from "components/Common/avatar";
 export * from "components/Common/button";
 export * from "components/Common/card";

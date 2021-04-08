@@ -1,11 +1,10 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef } from "react";
 import { Formik, Form } from "formik";
 import { TransactionsFormValidation } from "components/Form/transactions/TransactionsFormValidation";
 import { useToast } from "@chakra-ui/react";
-import { createRecord, getCategories } from "api/api";
+import { createRecord } from "api/api";
 import { useAuthentication } from "hooks/useAuthentication";
 import { Flex, FlexItem, InputField, SelectField } from "components/Common";
-import { DB } from "../../../api/config";
 import { useCategoriesList } from "hooks/useCategoriesList";
 
 export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
@@ -46,7 +45,7 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
         });
       }}
     >
-      {(props) => {
+      {({ values, setFieldValue }) => {
         return (
           <Form className="form">
             <div className="form__content">
@@ -59,9 +58,9 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
                     label="Categories"
                     options={categories}
                     onChange={(value) =>
-                      props.setFieldValue("category", value.value)
+                      setFieldValue("category", value.value)
                     }
-                    value={props.values.category}
+                    value={values.category}
                   />
                 </FlexItem>
                 <FlexItem lg={"6"}>
