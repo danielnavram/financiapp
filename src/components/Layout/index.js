@@ -1,17 +1,19 @@
 import React from "react";
-import { Header, Subtitle, Logo } from "components/Header";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Header, Subtitle } from "components/Header";
+import { useAuthentication } from "hooks/useAuthentication";
 
-export const Layout = ({ user, children }) => {
+export const Layout = ({ children }) => {
+  const {
+    user: { user },
+  } = useAuthentication();
   return user ? (
     <>
-      <Header />
+      <Header user={user} />
       <Subtitle />
       {children}
     </>
   ) : (
     <>
-      <Logo center="true" />
       {children}
     </>
   );

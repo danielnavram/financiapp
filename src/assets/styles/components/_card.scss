@@ -5,10 +5,11 @@
     margin-bottom: rem(20);
     background-color: #fff;
     &__title {
-        padding: rem(20) rem(25);
+        color: $black-contrast;
+        font-family: "Roboto", Arial, Helvetica, sans-serif;
         font-size: rem(20);
         line-height: rem(22);
-        color: $black-contrast;
+        padding: rem(20) rem(25);
         &--border {
             border-bottom: rem(1) solid #CBCBCB;
             margin-bottom: rem(20);

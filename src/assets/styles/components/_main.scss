@@ -1,0 +1,35 @@
+.main {
+  display: flex;
+  margin: rem(100) auto;
+  max-width: 30%;
+
+  button {
+    display: block;
+    margin: 0 auto rem(20);
+  }
+
+  &__content {
+    padding: rem(20) rem(40);
+  }
+
+  &__logo {
+    display: block;
+    margin-bottom: rem(40);
+    margin-top: rem(20);
+  }
+
+  &__image {
+    margin: 0 auto;
+  }
+
+  &__description {
+    margin-bottom: rem(30);
+  }
+
+  &__footer {
+    text-align: center;
+    a {
+      display: block;
+    }
+  }
+}

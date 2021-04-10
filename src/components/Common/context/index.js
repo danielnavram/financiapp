@@ -1,6 +1,5 @@
 import React, { forwardRef, useState, useRef } from "react";
 import { NavLink, Icon, useClick } from "components/Common";
-import { Link } from "react-router-dom";
 
 /**
  * * Options params receive an array of objects: { icon, title, to }

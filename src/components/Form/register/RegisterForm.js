@@ -1,12 +1,10 @@
 import React from "react";
 import { Formik, Form } from "formik";
-
-import { InputField } from "components/Common";
-// import { InputFile } from "components/Form/InputFile";
-import { Box, Button, useToast } from "@chakra-ui/react";
+import { Button, InputField } from "components/Common";
+import { Link, useToast } from "@chakra-ui/react";
 import { RegisterFormValidation } from "components/Form/register/RegisterFormValidation";
 import { register } from "api/authfirebase";
-// import { uploadProfileImage } from "api/storage";
+import { Link as RouterLink } from "react-router-dom";
 
 export const RegisterForm = () => {
   const toast = useToast();
@@ -27,35 +25,42 @@ export const RegisterForm = () => {
             description: message,
             duration: 9000,
             isClosable: true,
-            position: "bottom-left",
+            position: "top",
           });
         });
       }}
     >
       {(props) => {
         return (
-          <Box m="0 auto" w={["100%", "100%", "50%"]}>
-            <Form>
-              <InputField name="name" label="Name" type="text" />
-              <InputField name="email" label="Email" type="email" />
-              {/* <InputFile
+          <>
+          <Form className="form">
+            <InputField name="name" label="Name" type="text" />
+            <InputField name="email" label="Email" type="email" />
+            {/* <InputFile
                 name="photo"
                 label="Photo Profile"
                 onChange={(event) =>
                   props.setFieldValue("photo", event.target.files[0])
                 }
               /> */}
-              <InputField name="password" label="Password" type="password" />
-              <InputField
-                name="passwordConfirmation"
-                label="Confirm Password"
-                type="password"
-              />
-              <Button type="submit" mt="30px">
-                Sign Up
-              </Button>
-            </Form>
-          </Box>
+            <InputField name="password" label="Password" type="password" />
+            <InputField
+              name="passwordConfirmation"
+              label="Confirm Password"
+              type="password"
+            />
+            <Button
+              type="submit"
+              name="Sign Up"
+              variant="primary"
+              minW="200px"
+              mb="20px"
+            />
+          </Form>
+          <Link as={RouterLink} to="/login">
+            Already have an account ?
+          </Link>
+        </>
         );
       }}
     </Formik>

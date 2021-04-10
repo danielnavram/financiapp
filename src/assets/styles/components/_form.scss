@@ -5,6 +5,16 @@
     padding-left: rem(20);
     padding-bottom: rem(20);
   }
+
+  &__control {
+    margin-bottom: rem(20);
+  }
+
+  &__label {
+    font-size: rem(18);
+    line-height: rem(26);
+    font-weight: 600;
+  }
 }
 
 .select {
