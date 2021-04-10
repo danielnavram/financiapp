@@ -17,12 +17,10 @@ export default function Routes() {
       <AuthRoute
         path="/reset-password"
         component={ResetPasswordPage}
-        redirectUrl="/reset-password"
       />
       <AuthRoute
         path="/register"
         component={RegisterPage}
-        redirectUrl="/register"
       />
       <AuthRoute
         path="/dashboard"

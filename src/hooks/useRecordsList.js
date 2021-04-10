@@ -9,16 +9,19 @@ export function useRecordsList() {
   const [data, setData] = useState({ records: null, status: "loading" });
 
   useEffect(() => {
-    DB.collection("records")
-      .where("userId", "==", user.uid)
-      .onSnapshot((doc) => {
-        const datos = [];
-        doc.forEach((record) => {
-          datos.push({ ...record.data(), id: record.id })
+    if (user?.uid) {
+      const unsubscribe = DB.collection("records")
+        .where("userId", "==", user.uid)
+        .onSnapshot((doc) => { 
+          const datos = [];
+          doc.forEach((record) => {
+            datos.push({ ...record.data(), id: record.id });
+          });
+          setData({ records: datos, status: "success" });
         });
-        setData({ records: datos, status: "success" });
-      });
-  }, [user.uid]);
+      return unsubscribe;
+    }
+  }, [user?.uid]);
 
   return { ...data, setData };
 }

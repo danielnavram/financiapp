@@ -9,16 +9,24 @@ export function useCategoriesList() {
   const [data, setData] = useState({ categories: null, status: "loading" });
 
   useEffect(() => {
-    DB.collection("categorias")
-      .where("userId", "==", user.uid)
-      .onSnapshot((doc) => {
-        const datos = [];
-        doc.forEach((cat) => {
-          datos.push({...cat.data(), id: cat.id, label: cat.data().name, value: cat.data().name})
+    if (user?.uid) {
+      const unsubscribe = DB.collection("categorias")
+        .where("userId", "==", user.uid)
+        .onSnapshot((doc) => {
+          const datos = [];
+          doc.forEach((cat) => {
+            datos.push({
+              ...cat.data(),
+              id: cat.id,
+              label: cat.data().name,
+              value: cat.data().name,
+            });
+          });
+          setData({ categories: datos, status: "success" });
         });
-        setData({ categories: datos, status: "success" });
-      });
-  }, [user.uid]);
+      return unsubscribe;
+    }
+  }, [user?.uid]);
 
   return { ...data, setData };
 }

@@ -22,8 +22,6 @@ export default function TransactionsPage() {
     setSelection({ ...data, status: "success" });
   };
 
-  console.log(selectedRecord);
-
   return (
     <Layout user>
       <Flex>

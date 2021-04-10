@@ -23,9 +23,9 @@ export const RegisterForm = () => {
             status,
             title,
             description: message,
-            duration: 9000,
+            duration: 3000,
             isClosable: true,
-            position: "top",
+            position: "top-left",
           });
         });
       }}

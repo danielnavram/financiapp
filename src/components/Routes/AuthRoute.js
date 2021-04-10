@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useAuthentication } from "hooks/useAuthentication";
 
@@ -11,15 +11,13 @@ export default function AuthRoute({
   const {
     user: { status },
   } = useAuthentication();
-  const [canNavigate, setNavigate] = useState(false);
+  let canNavigate = false;
 
-  useEffect(() => {
-    if (logged) {
-      setNavigate(status === "success");
-    } else {
-      setNavigate(status === "logout" || status === "non-verified");
-    }
-  }, [status, logged]);
+  if (logged) {
+    canNavigate = status === "success";
+  } else {
+    canNavigate = status === "logout" || status === "non-verified";
+  }
 
   return (
     <Route

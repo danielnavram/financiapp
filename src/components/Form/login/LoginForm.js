@@ -27,9 +27,9 @@ export const LoginForm = () => {
             title: res.code || res.title,
             description: res.message,
             status: res.status,
-            duration: 9000,
+            duration: 3000,
             isClosable: true,
-            position: "top",
+            position: "top-left",
           });
         });
       }}
