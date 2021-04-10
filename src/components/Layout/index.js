@@ -11,7 +11,6 @@ export const Layout = ({ user, children }) => {
     </>
   ) : (
     <>
-      <Logo center="true" />
       {children}
     </>
   );

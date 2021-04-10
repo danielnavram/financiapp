@@ -19,7 +19,7 @@ export const InputField = ({
 }) => {
   const [field, meta] = useField(name);
   return (
-    <FormControl id={name} isInvalid={meta.error && meta.touched}>
+    <FormControl className="form__control" id={name} isInvalid={meta.error && meta.touched}>
       <FormLabel fontSize={14}>{label}</FormLabel>
       <InputLeftElement children={<Icon name={iconName} />} />
       <InputChakra
@@ -101,7 +101,7 @@ export const SelectField = ({
   };
 
   return (
-    <FormControl id={name} isInvalid={meta.error && meta.touched}>
+    <FormControl className="form__control" id={name} isInvalid={meta.error && meta.touched}>
       <FormLabel fontSize={14}>{label}</FormLabel>
       <InputLeftElement children={<Icon name={iconName} />} />
       <Select

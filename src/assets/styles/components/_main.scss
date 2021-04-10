@@ -1,0 +1,17 @@
+.main {
+  margin: rem(100) auto;
+  max-width: 30%;
+
+  &__content {
+    padding: rem(20) rem(40);
+  }
+
+  &__logo {
+    display: block;
+    margin-bottom: rem(40);
+  }
+
+  &__image {
+    margin: 0 auto;
+  }
+}
