@@ -1,0 +1,57 @@
+@mixin big-desktop {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == xs {
+    @media screen and (max-width: 480px) {
+        @content;
+      }
+  }
+  @if $breakpoint == sm {
+    @media screen and (min-width: 600px) {
+        @content;
+      }
+  }
+  @if $breakpoint == md {
+    @media screen and (min-width: 768px) {
+        @content;
+      }
+  }
+  @if $breakpoint == lg {
+    @media screen and (min-width: 992px) {
+        @content;
+      }
+  }
+  @if $breakpoint == xl {
+    @media screen and (min-width: 1200px) {
+        @content;
+      }
+  }
+}

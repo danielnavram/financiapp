@@ -2,8 +2,10 @@ import React from "react";
 
 const mapProps = {
   xs: "col-xs",
+  sm: "col-sm",
   md: "col-md",
-  lg: "col-desk",
+  lg: "col-lg",
+  xl: "col-xl",
 };
 
 const mapClasses = {
