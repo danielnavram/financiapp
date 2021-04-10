@@ -1,28 +1,49 @@
 .grid {
-    @include grid-base($desk-grid-width);
-    &-0 {
-        @include grid-base(100%);
-    }
-    &--space-between {
-        justify-content: space-between;
-    }
-    &--space-around {
-        justify-content: space-around;
-    }
-    &--align-center{
-        align-items: center;
-    }
-    &--justify-center{
-        justify-content: center;
-    }
-    &--justify-end{
-        align-content: flex-end;
-    }
-    &--horizontal {
-        flex-direction: column;
-    }
+  @include grid-base($desk-grid-width);
+  @include respond(xs) {
+    width: $mob-grid-width;
+  }
+  @include respond(sm) {
+    width: $port-grid-width;
+  }
+  @include respond(md) {
+    width: $land-grid-width;
+  }
+  @include respond(lg) {
+    width: $desk-grid-width;
+  }
+  &-0 {
+    @include grid-base(100%);
+  }
+  &--space-between {
+    justify-content: space-between;
+  }
+  &--space-around {
+    justify-content: space-around;
+  }
+  &--align-center {
+    align-items: center;
+  }
+  &--justify-center {
+    justify-content: center;
+  }
+  &--justify-end {
+    align-content: flex-end;
+  }
+  &--horizontal {
+    flex-direction: column;
+  }
 }
 
 .col {
-    @include columns-loop(desk, $grid-desktop-columns, $desk-gutter);
+  @include columns-loop(lg, $grid-desktop-columns, $desk-gutter);
+  @include respond(xs) {
+    @include columns-loop(xs, $grid-mobile-columns, $mob-gutter)
+  }
+  @include respond(sm) {
+    @include columns-loop(sm, $grid-portrait-columns, $port-gutter)
+  }
+  @include respond(md) {
+    @include columns-loop(md, $grid-landscape-columns, $land-gutter)
+  }
 }

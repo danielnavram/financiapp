@@ -3,11 +3,32 @@ $base-font: 16;
 $grid-desktop-columns: 12;
 $grid-desktop-sideMargin: 80px;
 $grid-desktop-gutter: 20px;
-$grid-desktop-breakpoint: 1400px;
+$grid-desktop-breakpoint: 992px;
 
-$grid-tablet-breakpoint: 1020px;
-$grid-mobile-breakpoint: 620px;
+$grid-landscape-columns: 12;
+$grid-landscape-sideMargin: 60px;
+$grid-landscape-gutter: 20px;
+$grid-landscape-breakpoint: 768px;
 
-$desk-grid-width: $grid-desktop-columns * ($grid-desktop-gutter + $grid-desktop-sideMargin);
-// $desk-grid-width: 100% - (($grid-desktop-sideMargin * 2 / $grid-desktop-breakpoint) * 100%);
-$desk-gutter: ($grid-desktop-gutter / ($grid-desktop-breakpoint - ($grid-desktop-sideMargin * 2)) * 100%);
+$grid-portrait-columns: 12;
+$grid-portrait-sideMargin: 40px;
+$grid-portrait-gutter: 10px;
+$grid-portrait-breakpoint: 600px;
+
+$grid-mobile-columns: 4;
+$grid-mobile-sideMargin: 32px;
+$grid-mobile-gutter: 20px;
+$grid-mobile-breakpoint: 480px;
+
+// $desk-grid-width: $grid-desktop-columns * ($grid-desktop-gutter + $grid-desktop-sideMargin);
+$desk-grid-width: 100% - (($grid-desktop-sideMargin * 2 / $grid-desktop-breakpoint) * 100%);
+$desk-gutter: ($grid-desktop-gutter / ($grid-desktop-breakpoint - ($grid-desktop-sideMargin * 2))) * 100%;
+
+$land-grid-width: 100% - (($grid-landscape-sideMargin * 2 / $grid-landscape-breakpoint) * 100%);
+$land-gutter: ($grid-landscape-gutter / ($grid-landscape-breakpoint - ($grid-landscape-sideMargin * 2))) * 100%;
+
+$port-grid-width: 100% - (($grid-portrait-sideMargin * 2 / $grid-portrait-breakpoint) * 100%);
+$port-gutter: ($grid-portrait-gutter / ($grid-portrait-breakpoint - ($grid-portrait-sideMargin * 2))) * 100%;
+
+$mob-grid-width: 100% - (($grid-mobile-sideMargin * 2 / $grid-mobile-breakpoint) * 100%);
+$mob-gutter: ($grid-mobile-gutter / ($grid-mobile-breakpoint - ($grid-mobile-sideMargin * 2))) * 100%;

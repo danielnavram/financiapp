@@ -21,11 +21,11 @@
 }
 
 @mixin grid-base($width) {
-    box-sizing: border-box;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    flex-wrap: wrap;
-    max-width: $grid-desktop-breakpoint;
-    width: $width;
+  box-sizing: border-box;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  max-width: $grid-desktop-breakpoint;
+  width: $width;
 }
