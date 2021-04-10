@@ -2,7 +2,6 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { LoginFormValidation } from "components/Form/login/LoginFormValidation";
-
 import { Button, InputField } from "components/Common";
 import { useToast, Link } from "@chakra-ui/react";
 import { login } from "api/authfirebase";
@@ -15,8 +14,8 @@ export const LoginForm = () => {
   return (
     <Formik
       initialValues={{
-        email: "danielnavram@gmail.com",
-        password: "1234567890",
+        email: "",
+        password: "",
       }}
       validationSchema={LoginFormValidation}
       onSubmit={({ email, password }) => {
@@ -30,7 +29,7 @@ export const LoginForm = () => {
             status: res.status,
             duration: 9000,
             isClosable: true,
-            position: "bottom-left",
+            position: "top",
           });
         });
       }}
@@ -49,9 +48,14 @@ export const LoginForm = () => {
                 mb="20px"
               />
             </Form>
-            <Link as={RouterLink} to="/reset-password">
-              Did you forgot your password?
-            </Link>
+            <p className="main__footer">
+              <Link as={RouterLink} to="/register">
+                Don't have an account?
+              </Link>
+              <Link as={RouterLink} to="/reset-password">
+                Did you forgot your password?
+              </Link>
+            </p>
           </>
         );
       }}

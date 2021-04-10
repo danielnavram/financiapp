@@ -1,13 +1,8 @@
 import React from "react";
 import { Flex, NavLink, Icon, Avatar } from "components/Common";
-import { useAuthentication } from "hooks/useAuthentication";
 import { Logo } from "components/Header/Logo";
 
-export const Header = () => {
-  const {
-    user: { user },
-  } = useAuthentication();
-
+export const Header = ({ user }) => {
   return (
     <div className="nav">
       <Flex spacebetween="true" fullWidth="true" aligncenter="true">
@@ -39,9 +34,12 @@ export const Header = () => {
         <div className="user">
           <Icon className="user__icon" name="notification" size={"24px"} />
           <Icon className="user__icon" name="chat" size={"24px"} />
-          <Avatar url={user.photoURL || "assets/images/user.png"} alt={user.displayName} />
+          <Avatar
+            url={user.photoURL || "assets/images/user.png"}
+            alt={user.displayName}
+          />
         </div>
       </Flex>
     </div>
   );
-}
+};

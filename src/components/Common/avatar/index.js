@@ -23,7 +23,7 @@ export const Avatar = ({ url, alt }) => {
 
   const options = [
     { icon: <Icon name="trash" />, name: "Profile", link: "/profile" },
-    { icon: <Icon name="document" />, name: "Log out", onClick: handleLogout },
+    { icon: <Icon name="document" />, name: "Log out", link: "/login", onClick: handleLogout },
   ];
 
   return (

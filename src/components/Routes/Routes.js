@@ -12,31 +12,35 @@ import ResetPasswordPage from "pages/ResetPasswordPage";
 export default function Routes() {
   return (
     <Router>
-      <Route exact path="/" component={HomePage} redirectUrl="/login" />
-      <AuthRoute path="/login" component={LoginPage} />
+      <Route exact path="/" component={HomePage} redirectUrl="/dashboard" />
+      <AuthRoute path="/login" component={LoginPage} redirectUrl="/dashboard" />
       <AuthRoute
         path="/reset-password"
         component={ResetPasswordPage}
-        redirectUrl="/login"
+        redirectUrl="/reset-password"
       />
-      <AuthRoute path="/register" component={RegisterPage} />
+      <AuthRoute
+        path="/register"
+        component={RegisterPage}
+        redirectUrl="/register"
+      />
       <AuthRoute
         path="/dashboard"
         component={DashboardPage}
-        logged
         redirectUrl="/login"
+        logged
       />
       <AuthRoute
         path="/categories"
         component={CategoriesPage}
-        logged
         redirectUrl="/login"
+        logged
       />
       <AuthRoute
         path="/transactions"
         component={TransactionsPage}
-        logged
         redirectUrl="/login"
+        logged
       />
     </Router>
   );
