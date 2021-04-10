@@ -57,8 +57,9 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
                     name="category"
                     label="Categories"
                     options={categories}
-                    onChange={(value) =>
-                      setFieldValue("category", value.value)
+                    onChange={(value) =>{
+                      console.log(value)
+                      setFieldValue("category", value.value)}
                     }
                     value={values.category}
                   />

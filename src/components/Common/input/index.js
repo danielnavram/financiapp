@@ -53,7 +53,18 @@ export const SelectField = ({
   value,
   ...rest
 }) => {
-  const [field, meta, helpers] = useField(name);
+  const [field, meta] = useField(name);
+
+  const dot = (color) => ({
+    backgroundColor: color || 'rgba(15,13,28,0.7)',
+    borderRadius: 10,
+    content: '" "',
+    display: 'block',
+    marginRight: 8,
+    height: 10,
+    width: 10,
+  })
+
   const customStyles = {
     control: (provided, state) => ({
       backgroundColor: "rgba(219,222,226,0.3)",
@@ -65,8 +76,24 @@ export const SelectField = ({
       display: "flex",
       height: "2.5rem",
       maxWidth: "100%",
-      padding: "0 6px",
+      padding: "0 0.25rem",
     }),
+    option: (styles, {data}) => {
+      return {
+        cursor: 'pointer',
+        padding: '0.5rem 0.75rem',
+        alignItems: 'center',
+        display: 'flex',
+        transition: 'all 0.3s',
+        ':before': dot(data.color),
+        ':hover':{
+          backgroundColor: 'rgba(200,200,200,0.3)'
+        }
+      }
+    },
+    input: ((styles, {data}) => ({ left: '1.5rem', display: 'flex', alignItems:'center',})),
+    placeholder: ((styles, {data}) => ({ ...styles, display: 'flex', alignItems:'center', ':before': dot(data?.color)})),
+    singleValue: ((styles, {data}) => ({ ...styles, display: 'flex', alignItems:'center', ':before': dot(data?.color)})),
   };
 
   const defaultValue = (options, value) => {
@@ -82,7 +109,9 @@ export const SelectField = ({
         {...rest}
         name={name}
         options={options}
-        onChange={(value) => onChange(value)}
+        onChange={(value) => 
+          onChange(value)
+        }
         styles={customStyles}
         value={defaultValue(options, value)}
       />

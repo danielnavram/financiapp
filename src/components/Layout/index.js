@@ -3,20 +3,16 @@ import { Header, Subtitle, Logo } from "components/Header";
 import { BrowserRouter as Router } from "react-router-dom";
 
 export const Layout = ({ user, children }) => {
-  return (
+  return user ? (
     <>
-      {user ? (
-        <>
-          <Header />
-          <Subtitle />
-          {children}
-        </>
-      ) : (
-        <>
-          <Logo center="true" />
-          {children}
-        </>
-      )}
+      <Header />
+      <Subtitle />
+      {children}
+    </>
+  ) : (
+    <>
+      <Logo center="true" />
+      {children}
     </>
   );
-}
+};
