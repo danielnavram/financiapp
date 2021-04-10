@@ -6,7 +6,7 @@ import { Loading } from "components/Status/Loading";
 import { Tr, Td, ButtonGroup, useToast } from "@chakra-ui/react";
 
 export const RecordsList = ({handleSelection}) => {
-  const { records, status, setData } = useRecordsList();
+  const { records, status } = useRecordsList();
   const toast = useToast();
 
   const handleDeleteRecord = (id) => {

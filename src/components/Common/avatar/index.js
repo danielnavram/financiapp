@@ -28,16 +28,16 @@ export const Avatar = ({ url, alt }) => {
 
   return (
     <div className="avatar">
-      <DropdownMenu
-        button={
-          <button className="avatar__link">
+      <DropdownMenu  
+        items={options}>
+        
+      
+      
             <div className="avatar__image-container">
               <img className="avatar__image" alt={alt} src={url} />
             </div>
-          </button>
-        }
-        items={options}
-      />
+        
+      </DropdownMenu>
     </div>
   );
 };
