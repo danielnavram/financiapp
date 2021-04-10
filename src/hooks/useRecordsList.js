@@ -7,7 +7,6 @@ export function useRecordsList() {
     user: { user },
   } = useContext(AuthContext);
   const [data, setData] = useState({ records: null, status: "loading" });
-
   useEffect(() => {
     if (user?.uid) {
       const unsubscribe = DB.collection("records")
@@ -21,7 +20,7 @@ export function useRecordsList() {
         });
       return unsubscribe;
     }
-  }, [user?.uid]);
+  }, [user]);
 
   return { ...data, setData };
 }

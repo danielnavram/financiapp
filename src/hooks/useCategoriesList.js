@@ -7,7 +7,7 @@ export function useCategoriesList() {
     user: { user },
   } = useContext(AuthContext);
   const [data, setData] = useState({ categories: null, status: "loading" });
-
+  
   useEffect(() => {
     if (user?.uid) {
       const unsubscribe = DB.collection("categorias")
@@ -26,7 +26,7 @@ export function useCategoriesList() {
         });
       return unsubscribe;
     }
-  }, [user?.uid]);
+  }, [user]);
 
   return { ...data, setData };
 }

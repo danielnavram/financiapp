@@ -27,7 +27,7 @@ export const ContextMenu = forwardRef(
   }
 );
 
-export const DropdownMenu = ({ button, darkMode, isOpen, items, ...rest }) => {
+export const DropdownMenu = ({ children, darkMode, isOpen, items, ...rest }) => {
   const ref = useRef();
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
@@ -41,7 +41,7 @@ export const DropdownMenu = ({ button, darkMode, isOpen, items, ...rest }) => {
         onClick={() => toggle(!open)}
         {...rest}
       >
-        {button}
+        {children}
       </button>
       {open && (
         <ul className="context__list">
