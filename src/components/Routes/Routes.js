@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import PrivateRoute from "components/Routes/PrivateRoute";
 import AuthRoute from "components/Routes/AuthRoute";
-
 import HomePage from "pages/HomePage";
 import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";
@@ -14,14 +12,32 @@ import ResetPasswordPage from "pages/ResetPasswordPage";
 export default function Routes() {
   return (
     <Router>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={HomePage} redirectUrl="/login" />
       <AuthRoute path="/login" component={LoginPage} />
-      <AuthRoute path="/reset-password" component={ResetPasswordPage} />
+      <AuthRoute
+        path="/reset-password"
+        component={ResetPasswordPage}
+        redirectUrl="/login"
+      />
       <AuthRoute path="/register" component={RegisterPage} />
-      <PrivateRoute path="/dashboard" component={DashboardPage} />
-      <PrivateRoute path="/categories" component={CategoriesPage} />
-      {/* <PrivateRoute path="/profile" component={ProfilePage} /> */}
-      <PrivateRoute path="/transactions" component={TransactionsPage} />
+      <AuthRoute
+        path="/dashboard"
+        component={DashboardPage}
+        logged
+        redirectUrl="/login"
+      />
+      <AuthRoute
+        path="/categories"
+        component={CategoriesPage}
+        logged
+        redirectUrl="/login"
+      />
+      <AuthRoute
+        path="/transactions"
+        component={TransactionsPage}
+        logged
+        redirectUrl="/login"
+      />
     </Router>
   );
 }
