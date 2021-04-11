@@ -9,6 +9,9 @@
     }
     &__item {
         font-weight: 600;
+        
+    }
+    &__link {
         margin-right: rem(30);
         position: relative;
         &::after {
@@ -28,8 +31,6 @@
             bottom: -60%;
             opacity: 1;
         }
-    }
-    &__link {
         &:hover {
             text-decoration: none;
         }

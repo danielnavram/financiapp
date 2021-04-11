@@ -1,8 +1,8 @@
-import React, { forwardRef } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { NavLink as LinkRouter } from "react-router-dom";
 
-export const NavLink = forwardRef(({ to, children, ...rest }, ref) => {
+export const NavLink = ({ to, children, ...rest }) => {
     return (
-        <Link {...rest} to={to || '#'} ref={ref}>{children}</Link>
+        <LinkRouter {...rest} to={to || '#'} activeClassName="active">{children}</LinkRouter>
     )
-});
+};
