@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex, FlexItem } from "components/Common";
 import { Heading } from "@chakra-ui/react";
+import NumberFormat from "react-number-format";
 
 export const RecordDetail = ({ title, date, description, value }) => {
   return (
@@ -30,7 +31,14 @@ export const RecordDetail = ({ title, date, description, value }) => {
             <Heading as={"h3"} className="record__title" fontSize={"18px"}>
               Value
             </Heading>
-            <p className="record__value">{value}</p>
+            <NumberFormat
+              className="record__value"
+              value={value}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"$"}
+              renderText={(value, props) => <p {...props}>{value}</p>}
+            />
           </FlexItem>
         </Flex>
       </div>

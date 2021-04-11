@@ -5,7 +5,7 @@ import { Card, Flex, FlexItem } from "components/Common";
 export default function OverviewPage() {
   return (
     <Layout title="Overview">
-      <Flex>
+      <Flex fullWidth>
         <FlexItem lg={4} md={4} sm={2} xs={4}>
           <Card title="Cashflow Behavior">
             Chart goes here
