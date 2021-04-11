@@ -1,6 +1,36 @@
+@mixin big-desktop {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
 @mixin respond($breakpoint) {
   @if $breakpoint == xs {
-    @media screen and (min-width: 320px) {
+    @media screen and (max-width: 480px) {
         @content;
       }
   }

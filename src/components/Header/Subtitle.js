@@ -5,7 +5,7 @@ import { Heading, Input } from "@chakra-ui/react";
 export const Subtitle = ({ title, ...rest }) => {
   return (
     <div className="subtitle">
-      <Flex spacebetween="true" aligncenter="true" fullWidth>
+      <Flex spacebetween="true" aligncenter="true">
         <Heading
           as={"h1"}
           fontSize={"24px"}

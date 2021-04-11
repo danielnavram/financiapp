@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import { Formik, Form } from "formik";
 import { TransactionsFormValidation } from "components/Form/transactions/TransactionsFormValidation";
 import { useToast } from "@chakra-ui/react";
@@ -6,11 +6,9 @@ import { createRecord } from "api/api";
 import { useAuthentication } from "hooks/useAuthentication";
 import { Flex, FlexItem, InputField, SelectField } from "components/Common";
 import { useCategoriesList } from "hooks/useCategoriesList";
-import NumberFormat from "react-number-format";
 
 export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
   const toast = useToast();
-  const [color, setColor] = useState();
   const {
     user: { user },
   } = useAuthentication();
@@ -21,7 +19,7 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
       initialValues={{
         title: "",
         date: "",
-        category: {},
+        category: "",
         value: "",
         description: "",
       }}
@@ -31,7 +29,7 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
         createRecord({
           title: data.title,
           date: data.date,
-          category: { name: data.category, color },
+          category: data.category,
           userId: user.uid,
           value: data.value,
           description: data.description,
@@ -47,7 +45,7 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
         });
       }}
     >
-      {({ values, setFieldValue, ...rest }) => {
+      {({ values, setFieldValue }) => {
         return (
           <Form className="form">
             <div className="form__content">
@@ -59,22 +57,16 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
                     name="category"
                     label="Categories"
                     options={categories}
-                    onChange={(value) => {
-                      setFieldValue("category", value.value);
-                      setColor(value.color);
-                    }}
+                    onChange={(value) =>{
+                      console.log(value)
+                      setFieldValue("category", value.value)}
+                    }
                     value={values.category}
                   />
                 </FlexItem>
                 <FlexItem lg={"6"}>
                   <InputField name="date" label="Date" type="date" />
                   <InputField name="value" label="Value" type="number" />
-                  {/* <NumberFormat
-                    customInput={InputField}
-                    name="value"
-                    label="Value"
-                    thousandSeparator={true}
-                  /> */}
                 </FlexItem>
                 <FlexItem lg={"12"}>
                   <InputField
