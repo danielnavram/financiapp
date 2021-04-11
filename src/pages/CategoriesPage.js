@@ -16,7 +16,7 @@ export default function Categories() {
 
   return (
     <Layout title="Categories">
-      <Flex>
+      <Flex fullWidth>
         <FlexItem lg={6} md={6} sm={12} xs={4}>
           <Card title="Categories">
             <TableList
