@@ -3,7 +3,7 @@ import {Layout} from "components/Layout";
 
 export default function HomePage() {
   return (
-    <Layout>
+    <Layout title="Home">
       Hola este es el mensaje
     </Layout>
   );

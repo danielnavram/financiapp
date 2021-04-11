@@ -4,7 +4,7 @@ import AuthRoute from "components/Routes/AuthRoute";
 import HomePage from "pages/HomePage";
 import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";
-import DashboardPage from "pages/DashboardPage";
+import OverviewPage from "pages/OverviewPage";
 import CategoriesPage from "pages/CategoriesPage";
 import TransactionsPage from "pages/TransactionsPage";
 import ResetPasswordPage from "pages/ResetPasswordPage";
@@ -12,8 +12,8 @@ import ResetPasswordPage from "pages/ResetPasswordPage";
 export default function Routes() {
   return (
     <Router>
-      <Route exact path="/" component={HomePage} redirectUrl="/dashboard" />
-      <AuthRoute path="/login" component={LoginPage} redirectUrl="/dashboard" />
+      <Route exact path="/" component={HomePage} redirectUrl="/overview" />
+      <AuthRoute path="/login" component={LoginPage} redirectUrl="/overview" />
       <AuthRoute
         path="/reset-password"
         component={ResetPasswordPage}
@@ -23,8 +23,8 @@ export default function Routes() {
         component={RegisterPage}
       />
       <AuthRoute
-        path="/dashboard"
-        component={DashboardPage}
+        path="/overview"
+        component={OverviewPage}
         redirectUrl="/login"
         logged
       />
@@ -40,7 +40,7 @@ export default function Routes() {
         redirectUrl="/login"
         logged
       />
-      <Redirect path="*" to="/dashboard" />
+      <Redirect path="*" to="/overview" />
     </Router>
   );
 }
