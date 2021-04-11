@@ -35,7 +35,6 @@ export const CategoriesList = () => {
           <Td className="table__column">
             <ButtonGroup space={"2"}>
               <DropdownMenu
-                button={<Icon name={"more"} size={"20px"} />}
                 items={[
                   {
                     name: "Delete",
@@ -46,7 +45,9 @@ export const CategoriesList = () => {
                     name: "Modify",
                   },
                 ]}
-              />
+              >
+                <Icon name={"more"} size={"20px"} />
+              </DropdownMenu>
             </ButtonGroup>
           </Td>
         </Tr>

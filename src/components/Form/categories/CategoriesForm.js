@@ -40,10 +40,10 @@ export const CategoriesForm = forwardRef(({ ...rest }, ref) => {
           <Form className="form">
             <div className="form__content">
               <Flex fullWidth="true">
-                <FlexItem lg={"6"}>
+                <FlexItem lg={6} md={6} sm={12} xs={4}>
                   <InputField label="Category Name" name="name" type="text" />
                 </FlexItem>
-                <FlexItem lg={"6"}>
+                <FlexItem lg={6} md={6} sm={12} xs={4}>
                   <InputField
                     label="Choose a color"
                     name="color"

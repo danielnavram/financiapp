@@ -13,7 +13,7 @@ export function UserMenu({name, img}) {
       title: "Bye Bye!",
       description: "You have been logged out successfully. We hope you back soon",
       status: "info",
-      duration: 5000,
+      duration: 3000,
       position: "bottom-left",
       isClosable: true 
     })

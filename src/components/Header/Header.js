@@ -9,7 +9,7 @@ export const Header = ({ user }) => {
         <Logo />
         <nav className="nav__menu">
           <ul>
-            <li className="nav__item active">
+            <li className="nav__item">
               <NavLink className="nav__link" to="/overview">
                 Overview
               </NavLink>

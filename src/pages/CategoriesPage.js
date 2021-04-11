@@ -17,7 +17,7 @@ export default function Categories() {
   return (
     <Layout user="true">
       <Flex>
-        <FlexItem lg={"6"}>
+        <FlexItem lg={6} md={6} sm={12} xs={4}>
           <Card title="Categories">
             <TableList
               caption="All your categories goes here!"
@@ -27,7 +27,7 @@ export default function Categories() {
             </TableList>
           </Card>
         </FlexItem>
-        <FlexItem lg={"6"}>
+        <FlexItem lg={6} md={6} sm={12} xs={4}>
           <Card
             title="New Category"
             options={{
