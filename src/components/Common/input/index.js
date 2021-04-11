@@ -26,6 +26,7 @@ export const InputField = ({
         type={type}
         variant="filled"
         rounded={5}
+        autoComplete="off"
         bg="rgba(219, 222, 226, 0.3)"
         borderColor="rgba(15, 13, 28, 0.3)"
         _hover={{
