@@ -4,7 +4,6 @@ import { deleteRecord } from "../../api/api";
 import { DropdownMenu, Icon, Tag } from "components/Common";
 import { Loading } from "components/Status/Loading";
 import { Tr, Td, ButtonGroup, useToast } from "@chakra-ui/react";
-import NumberFormat from "react-number-format";
 
 export const RecordsList = ({handleSelection}) => {
   const { records, status } = useRecordsList();
@@ -34,29 +33,26 @@ export const RecordsList = ({handleSelection}) => {
         >
           <Td>{record.title}</Td>
           <Td>
-            <Tag color={record.category.color}>{record.category.name}</Tag>
+            <Tag color={record.color}>{record.category}</Tag>
           </Td>
           <Td>{record.date}</Td>
-          <Td><NumberFormat
-              value={record.value}
-              displayType={"text"}
-              thousandSeparator={true}
-              prefix={"$"}
-            /></Td>
+          <Td>{record.value}</Td>
           <Td d="none">{record.description}</Td>
           <Td className="table__column">
             <ButtonGroup space={"2"}>
               <DropdownMenu
+                button={<Icon name={"more"} size={"20px"} />}
                 items={[
                   {
                     name: "Delete",
                     icon: <Icon name="trash" />,
                     onClick: () => handleDeleteRecord(record.id),
                   },
+                  {
+                    name: "Modify",
+                  },
                 ]}
-              >
-                <Icon name={"more"} size={"20px"} />
-              </DropdownMenu>
+              />
             </ButtonGroup>
           </Td>
         </Tr>

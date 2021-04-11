@@ -41,6 +41,9 @@ export const CategoriesList = () => {
                     icon: <Icon name="trash" />,
                     onClick: () => handleDeleteCategory(item.id),
                   },
+                  {
+                    name: "Modify",
+                  },
                 ]}
               >
                 <Icon name={"more"} size={"20px"} />

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { Flex, FlexItem, Card, Button, Icon, Modal, Tag } from "components/Common";
+import { Flex, FlexItem, Card, Button, Icon, Modal } from "components/Common";
 import { Layout } from "components/Layout";
-import { useDisclosure } from "@chakra-ui/react";
+import { Tag, useDisclosure } from "@chakra-ui/react";
 import { TransactionsForm } from "components/Form/transactions/TransactionsForm";
 import { TableList } from "components/Table/TableList";
 import { RecordsList } from "components/Table/RecordsList";
@@ -24,10 +24,10 @@ export default function TransactionsPage() {
 
   return (
     <Layout user>
-      <Flex fullWidth>
-        <FlexItem lg={8} md={8} sm={12} xs={4}>
+      <Flex>
+        <FlexItem lg={8}>
           <Card
-            title="Records"
+            title="Transactions"
             options={{
               button: (
                 <Button
@@ -55,18 +55,18 @@ export default function TransactionsPage() {
             <TransactionsForm ref={transactionsRef} />
           </Modal>
         </FlexItem>
-        <FlexItem lg={4} md={4} sm={12} xs={4}>
+        <FlexItem lg={4}>
           <Card
-            title="Record Details"
+            title="Transaction Details"
             options={{
               button: (selectedRecord &&
-                <Tag color={selectedRecord.category.color}>
-                  {selectedRecord.category.name}
+                <Tag color={selectedRecord.color}>
+                  {selectedRecord.category}
                 </Tag>
               ),
             }}
           >
-            {selectedRecord ? <RecordDetail {...selectedRecord} /> : <p className="card__text">Please select a row on the list to see the details</p>}
+            {selectedRecord ? <RecordDetail {...selectedRecord} /> : 'Please select a row to see the details'}
           </Card>
         </FlexItem>
       </Flex>
