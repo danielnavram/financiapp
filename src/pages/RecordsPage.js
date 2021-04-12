@@ -1,13 +1,22 @@
 import React, { useRef, useState } from "react";
-import { Flex, FlexItem, Card, Button, Icon, Modal, Tag } from "components/Common";
+import {
+  Flex,
+  FlexItem,
+  Card,
+  Button,
+  Icon,
+  Modal,
+  Tag,
+} from "components/Common";
 import { Layout } from "components/Layout";
 import { useDisclosure } from "@chakra-ui/react";
 import { TransactionsForm } from "components/Form/transactions/TransactionsForm";
 import { TableList } from "components/Table/TableList";
 import { RecordsList } from "components/Table/RecordsList";
 import { RecordDetail } from "components/Table/RecordDetail";
+import { RecordsItem } from "components/Records/RecordsItem";
 
-export default function TransactionsPage() {
+export default function RecordsPage() {
   const [selectedRecord, setSelection] = useState();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const transactionsRef = useRef();
@@ -23,7 +32,7 @@ export default function TransactionsPage() {
   };
 
   return (
-    <Layout user>
+    <Layout title="Records">
       <Flex fullWidth>
         <FlexItem lg={8} md={8} sm={12} xs={4}>
           <Card
@@ -39,12 +48,17 @@ export default function TransactionsPage() {
               ),
             }}
           >
-            <TableList
+            <section className="list">
+              <ul className="list__container">
+                <RecordsItem />
+              </ul>
+            </section>
+            {/* <TableList
               caption="All your records are here!"
               headers={["Title", "Category", "Date", "Value", "Actions"]}
             >
               <RecordsList handleSelection={handleSelection} />
-            </TableList>
+            </TableList> */}
           </Card>
           <Modal
             isOpen={isOpen}
@@ -59,14 +73,20 @@ export default function TransactionsPage() {
           <Card
             title="Record Details"
             options={{
-              button: (selectedRecord &&
+              button: selectedRecord && (
                 <Tag color={selectedRecord.category.color}>
                   {selectedRecord.category.name}
                 </Tag>
               ),
             }}
           >
-            {selectedRecord ? <RecordDetail {...selectedRecord} /> : <p className="card__text">Please select a row on the list to see the details</p>}
+            {selectedRecord ? (
+              <RecordDetail {...selectedRecord} />
+            ) : (
+              <p className="card__text">
+                Please select a row on the list to see the details
+              </p>
+            )}
           </Card>
         </FlexItem>
       </Flex>

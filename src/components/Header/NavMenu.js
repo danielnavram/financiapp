@@ -11,8 +11,8 @@ export const NavMenu = () => {
           </NavLink>
         </li>
         <li className="nav__item">
-          <NavLink className="nav__link" to="/transactions">
-            Transactions
+          <NavLink className="nav__link" to="/records">
+            Records
           </NavLink>
         </li>
         <li className="nav__item">

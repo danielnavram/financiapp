@@ -6,7 +6,7 @@ import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";
 import OverviewPage from "pages/OverviewPage";
 import CategoriesPage from "pages/CategoriesPage";
-import TransactionsPage from "pages/TransactionsPage";
+import RecordsPage from "pages/RecordsPage";
 import ResetPasswordPage from "pages/ResetPasswordPage";
 
 export default function Routes() {
@@ -35,8 +35,8 @@ export default function Routes() {
         logged
       />
       <AuthRoute
-        path="/transactions"
-        component={TransactionsPage}
+        path="/records"
+        component={RecordsPage}
         redirectUrl="/login"
         logged
       />
