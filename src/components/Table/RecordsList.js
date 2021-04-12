@@ -4,6 +4,7 @@ import { deleteRecord } from "../../api/api";
 import { DropdownMenu, Icon, Tag } from "components/Common";
 import { Loading } from "components/Status/Loading";
 import { Tr, Td, ButtonGroup, useToast } from "@chakra-ui/react";
+import { RecordItem } from "components/List";
 import NumberFormat from "react-number-format";
 
 export const RecordsList = ({handleSelection}) => {

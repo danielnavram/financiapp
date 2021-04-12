@@ -1,0 +1,38 @@
+.list {
+  margin: 0;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: rem(25);
+  }
+  &__item {
+    cursor: pointer;
+    display: flex;
+    margin: rem(5) 0;
+    padding: 0 rem(25);
+    background-color: #cccccc;
+  }
+  &__section {
+    align-self: center;
+    padding-right: rem(30);
+    position: relative;
+    &:nth-child(2) {
+      flex: 5;
+    }
+    &:last-child {
+      display: inline-block;
+      flex-grow: 1;
+      text-align: center;
+      padding-right: 0;
+    }
+  }
+  &__title {
+    font-weight: 600;
+    color: $black-contrast;
+  }
+  &__remove {
+    background-color: #c1666b;
+    height: 100%;
+    width: 100%;
+  }
+}
