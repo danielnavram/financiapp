@@ -10,19 +10,18 @@ import {
 } from "components/Common";
 import { Layout } from "components/Layout";
 import { useDisclosure } from "@chakra-ui/react";
-import { TransactionsForm } from "components/Form/transactions/TransactionsForm";
+import { RecordsForm } from "components/Records/RecordsForm";
 import { TableList } from "components/Table/TableList";
-import { RecordsList } from "components/Table/RecordsList";
-import { RecordDetail } from "components/Table/RecordDetail";
-import { RecordsItem } from "components/Records/RecordsItem";
+import { RecordsList } from "components/Records/RecordsList";
+import { RecordDetail } from "components/Records/RecordDetail";
 
 export default function RecordsPage() {
   const [selectedRecord, setSelection] = useState();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const transactionsRef = useRef();
+  const recordsRef = useRef();
   const handleSubmit = () => {
-    if (transactionsRef.current) {
-      transactionsRef.current.submitForm();
+    if (recordsRef.current) {
+      recordsRef.current.submitForm();
       onClose();
     }
   };
@@ -48,17 +47,11 @@ export default function RecordsPage() {
               ),
             }}
           >
-            <section className="list">
-              <ul className="list__container">
-                <RecordsItem />
-              </ul>
-            </section>
-            {/* <TableList
-              caption="All your records are here!"
+            <TableList
               headers={["Title", "Category", "Date", "Value", "Actions"]}
             >
               <RecordsList handleSelection={handleSelection} />
-            </TableList> */}
+            </TableList>
           </Card>
           <Modal
             isOpen={isOpen}
@@ -66,7 +59,7 @@ export default function RecordsPage() {
             title="New Record"
             handleSubmit={handleSubmit}
           >
-            <TransactionsForm ref={transactionsRef} />
+            <RecordsForm ref={recordsRef} />
           </Modal>
         </FlexItem>
         <FlexItem lg={4} md={4} sm={12} xs={4}>

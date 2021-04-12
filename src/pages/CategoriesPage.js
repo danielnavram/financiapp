@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Flex, FlexItem, Card, Button } from "components/Common";
-import { CategoriesForm } from "components/Form/categories/CategoriesForm";
-import { CategoriesList } from "components/Table/CategoriesList";
+import { CategoriesForm } from "components/Categories/CategoriesForm";
+import { CategoriesList } from "components/Categories/CategoriesList";
 import { TableList } from "components/Table/TableList";
 import { Layout } from "components/Layout";
 

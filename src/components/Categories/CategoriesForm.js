@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { Formik, Form } from "formik";
-import { CategoriesFormValidation } from "components/Form/categories/CategoriesFormValidation";
+import { CategoriesFormValidation } from "components/Categories/CategoriesFormValidation";
 import { useToast } from "@chakra-ui/react";
 import { createCategory } from "api/api";
 import { useAuthentication } from "hooks/useAuthentication";

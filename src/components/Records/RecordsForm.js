@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from "react";
 import { Formik, Form } from "formik";
-import { TransactionsFormValidation } from "components/Form/transactions/TransactionsFormValidation";
+import { RecordsFormValidation } from "components/Records/RecordsFormValidation";
 import { useToast } from "@chakra-ui/react";
 import { createRecord } from "api/api";
 import { useAuthentication } from "hooks/useAuthentication";
@@ -8,7 +8,7 @@ import { Flex, FlexItem, InputField, SelectField } from "components/Common";
 import { useCategoriesList } from "hooks/useCategoriesList";
 import NumberFormat from "react-number-format";
 
-export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
+export const RecordsForm = forwardRef(({ ...rest }, ref) => {
   const toast = useToast();
   const [color, setColor] = useState();
   const {
@@ -25,7 +25,7 @@ export const TransactionsForm = forwardRef(({ ...rest }, ref) => {
         value: "",
         description: "",
       }}
-      validationSchema={TransactionsFormValidation}
+      validationSchema={RecordsFormValidation}
       innerRef={ref}
       onSubmit={(data) => {
         createRecord({
