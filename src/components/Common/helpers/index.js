@@ -12,3 +12,30 @@ export const useClick = (ref, callback) => {
     return () => document.removeEventListener("click", handleClick);
   });
 };
+
+export const getTypeRecord = (type, data) => {
+  return data?.filter((item) => item.type === type);
+};
+
+export const sumRecords = (data) => {
+  return data?.map((data) => data.value).reduce((acc, cur) => acc + cur, 0);
+};
+
+export const sumCategoriesTypes = (dataArr) => {
+  if (!dataArr?.length) {
+    return {};
+  }
+  let categories = [...new Set(dataArr.map((data) => data.category.name))].map(
+    (category) => {
+      return {
+        category,
+        dataArr: dataArr.filter((data) => data.category.name === category),
+      };
+    }
+  );
+  return categories.map((category) => ({
+    ...category,
+    incomes: sumRecords(getTypeRecord("income", category.dataArr)),
+    expenses: sumRecords(getTypeRecord("expense", category.dataArr)),
+  }));
+};

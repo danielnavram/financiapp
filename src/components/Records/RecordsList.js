@@ -5,8 +5,9 @@ import { DropdownMenu, Icon, Tag } from "components/Common";
 import { Loading } from "components/Status/Loading";
 import { Tr, Td, ButtonGroup, useToast } from "@chakra-ui/react";
 import NumberFormat from "react-number-format";
+import { format } from "date-fns";
 
-export const RecordsList = ({handleSelection}) => {
+export const RecordsList = ({ handleSelection }) => {
   const { records, status } = useRecordsList();
   const toast = useToast();
 
@@ -26,23 +27,21 @@ export const RecordsList = ({handleSelection}) => {
   return status === "success" ? (
     records.map((record, index) => {
       return (
-        <Tr
-          key={index}
-          onClick={() =>
-            handleSelection(record)
-          }
-        >
+        <Tr key={index} onClick={() => handleSelection(record)}>
           <Td>{record.title}</Td>
           <Td>
             <Tag color={record.category.color}>{record.category.name}</Tag>
           </Td>
-          <Td>{record.date}</Td>
-          <Td><NumberFormat
+          <Td>{format(record.date.toDate(), "dd/MM/yyyy")}</Td>
+          <Td>
+            <NumberFormat
+              className={record.type === "income" ? "income" : "expense"}
               value={record.value}
               displayType={"text"}
               thousandSeparator={true}
               prefix={"$"}
-            /></Td>
+            />
+          </Td>
           <Td d="none">{record.description}</Td>
           <Td className="table__column">
             <ButtonGroup space={"2"}>

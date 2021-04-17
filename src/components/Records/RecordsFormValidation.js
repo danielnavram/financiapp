@@ -6,4 +6,5 @@ export const RecordsFormValidation = Yup.object().shape({
   category: Yup.string().required("This is a required field"),
   value: Yup.string().required("This is a required field"),
   description: Yup.string().required("This is a required field"),
+  type: Yup.string().required("This is a required field"),
 });

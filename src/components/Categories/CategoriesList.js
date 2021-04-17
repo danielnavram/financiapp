@@ -4,6 +4,7 @@ import { deleteCategory } from "api/api";
 import { DropdownMenu, Tag, Icon } from "components/Common";
 import { Loading } from "components/Status/Loading";
 import { Tr, Td, ButtonGroup, useToast } from "@chakra-ui/react";
+import { format } from "date-fns";
 
 export const CategoriesList = () => {
   const { categories, status } = useCategoriesList();
@@ -30,7 +31,7 @@ export const CategoriesList = () => {
             <Tag color={item.color}>{item.name}</Tag>
           </Td>
           <Td>
-            {new Date(item.createdAt.toDate()).toLocaleDateString("us-EN")}
+            {format(item.createdAt.toDate(), "dd/MM/yyyy")}
           </Td>
           <Td className="table__column">
             <ButtonGroup space={"2"}>
