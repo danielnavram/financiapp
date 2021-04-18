@@ -16,7 +16,6 @@ export const Overview = () => {
   const { categories, types } = useRecords();
   let labels = [];
   let series = [];
-  let months = [];
   let allDates = [];
   let cashFlow = [];
   let loading = true;

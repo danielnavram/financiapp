@@ -16,52 +16,59 @@ export const BarChart = ({ series, labelChart, type, rest }) => {
       zoom: { enabled: false },
     },
     stroke: {
-      curve: 'smooth',
+      curve: "smooth",
     },
     dataLabels: {
       enabled: true,
       formatter: (val, opts) => {
         return currencyFormatting(val);
-      }
+      },
     },
     legend: { show: false },
     grid: {
       show: false,
       padding: {
         top: -10,
-        right: type === 'line' ? 40 : 0,
+        right: type === "line" ? 40 : 0,
         bottom: -10,
-        left:  type === 'line' ? 40 : 0,
+        left: type === "line" ? 40 : 0,
       },
     },
     tooltip: { enabled: false },
     xaxis: {
       categories: labelChart,
       labels: {
-        show: true
+        show: true,
       },
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: false
-      }
+        show: false,
+      },
     },
     yaxis: {
       floating: true,
       offsetX: -20,
       labels: {
-        show: false
+        show: false,
       },
       axisBorder: {
-        show: false
-      }
+        show: false,
+      },
     },
   };
 
   return (
     <div className="mixed-chart">
-      <Chart series={series} labels={labelChart} options={options} type={type} width="100%" {...rest} />
+      <Chart
+        series={series}
+        labels={labelChart}
+        options={options}
+        type={type}
+        width="100%"
+        {...rest}
+      />
     </div>
   );
 };

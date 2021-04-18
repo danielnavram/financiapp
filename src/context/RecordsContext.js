@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DB } from "../api/config";
 import { useAuthentication } from "hooks/useAuthentication";
-import { getTypeRecord, sumCategoriesTypes  } from "components/Common";
-import { format } from "date-fns";
+import { getTypeRecord, sumCategoriesTypes } from "components/Common";
 
 const RecordsContext = React.createContext({});
 
@@ -19,7 +18,10 @@ export function RecordsContextProvider({ children }) {
       const unsubscribe = DB.collection("records")
         .where("userId", "==", user.uid)
         .onSnapshot((snap) => {
-          const data = snap.docs.map((doc) => ({...doc.data(), date: doc.data().date.toDate()}));
+          const data = snap.docs.map((doc) => ({
+            ...doc.data(),
+            date: doc.data().date.toDate(),
+          }));
           setRecords(data);
           setCategories(sumCategoriesTypes(data));
           setTypes({

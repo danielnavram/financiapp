@@ -35,7 +35,9 @@ export const RecordDetail = ({ title, date, description, value, type }) => {
               Value
             </Heading>
             <NumberFormat
-              className={"record__value" && type === "income" ? "income" : "expense"}
+              className={
+                "record__value" && type === "income" ? "income" : "expense"
+              }
               value={value}
               displayType={"text"}
               thousandSeparator={true}
