@@ -39,3 +39,8 @@ export const sumCategoriesTypes = (dataArr) => {
     expenses: sumRecords(getTypeRecord("expense", category.dataArr)),
   }));
 };
+
+export const currencyFormatting = (value) =>
+  (new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP",  }).format(
+    value || 0
+  )).replace(/,.+/, '');

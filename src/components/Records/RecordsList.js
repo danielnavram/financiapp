@@ -33,7 +33,7 @@ export const RecordsList = ({ handleSelection }) => {
             <Tag color={record.category.color}>{record.category.name}</Tag>
           </Td>
           <Td>{format(record.date.toDate(), "dd/MM/yyyy")}</Td>
-          <Td>
+          <Td className="table__value">
             <NumberFormat
               className={record.type === "income" ? "income" : "expense"}
               value={record.value}
