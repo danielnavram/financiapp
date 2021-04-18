@@ -10,7 +10,7 @@ export const ResetPasswordForm = () => {
 
   return (
     <Formik
-      initialValues={{ email: "danielnavram@gmail.com" }}
+      initialValues={{ email: "" }}
       validationSchema={ResetPasswordValidation}
       onSubmit={({ email }) => {
         resetPassword(email).then(({ status, title, message }) => {

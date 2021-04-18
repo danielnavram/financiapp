@@ -11,10 +11,10 @@ export const RegisterForm = () => {
   return (
     <Formik
       initialValues={{
-        name: "Daniel Navarro",
-        email: "danielnavram@gmail.com",
-        password: "123456",
-        passwordConfirmation: "123456",
+        name: "",
+        email: "",
+        password: "",
+        passwordConfirmation: "",
       }}
       validationSchema={RegisterFormValidation}
       onSubmit={(data) => {

@@ -14,7 +14,7 @@ export function RecordsContextProvider({ children }) {
   } = useAuthentication();
 
   useEffect(() => {
-    if (user.uid) {
+    if (user?.uid) {
       const unsubscribe = DB.collection("records")
         .where("userId", "==", user.uid)
         .onSnapshot((snap) => {
