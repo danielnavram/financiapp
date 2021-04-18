@@ -2,8 +2,9 @@ import React from "react";
 import { Flex, FlexItem } from "components/Common";
 import { Heading } from "@chakra-ui/react";
 import NumberFormat from "react-number-format";
+import { format } from "date-fns";
 
-export const RecordDetail = ({ title, date, description, value }) => {
+export const RecordDetail = ({ title, date, description, value, type }) => {
   return (
     <div className="record">
       <div className="record__item">
@@ -15,7 +16,9 @@ export const RecordDetail = ({ title, date, description, value }) => {
             <p className="record__value">{title}</p>
           </FlexItem>
           <FlexItem lg={"6"}>
-            <p className="record__value record--date">{date}</p>
+            <p className="record__value record--date">
+              {format(date.toDate(), "iii dd MMMM, yyyy")}
+            </p>
           </FlexItem>
         </Flex>
       </div>
@@ -32,7 +35,7 @@ export const RecordDetail = ({ title, date, description, value }) => {
               Value
             </Heading>
             <NumberFormat
-              className="record__value"
+              className={"record__value" && type === "income" ? "income" : "expense"}
               value={value}
               displayType={"text"}
               thousandSeparator={true}

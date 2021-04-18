@@ -3,12 +3,15 @@ import { AuthContextProvider } from "context/AuthContext";
 import Routes from "components/Routes/Routes";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "components/Theme";
+import { RecordsContextProvider } from "context/RecordsContext";
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <AuthContextProvider>
-        <Routes />
+        <RecordsContextProvider>
+          <Routes />
+        </RecordsContextProvider>
       </AuthContextProvider>
     </ChakraProvider>
   );

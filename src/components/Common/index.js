@@ -10,3 +10,4 @@ export * from "components/Common/input";
 export * from "components/Common/modal";
 export * from "components/Common/nav/NavLink";
 export * from "components/Common/tag";
+export * from "components/Common/graphics";

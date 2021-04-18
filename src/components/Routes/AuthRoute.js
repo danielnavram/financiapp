@@ -9,7 +9,7 @@ export default function AuthRoute({
   ...rest
 }) {
   const {
-    user: { status },
+    user: { status }
   } = useAuthentication();
   let canNavigate = false;
 
@@ -23,7 +23,11 @@ export default function AuthRoute({
     <Route
       {...rest}
       render={(props) =>
-        canNavigate ? <Component {...props} /> : <Redirect to={redirectUrl} />
+        canNavigate ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={redirectUrl} />
+        )
       }
     />
   );

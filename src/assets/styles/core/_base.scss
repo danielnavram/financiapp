@@ -1,11 +1,21 @@
 html {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: $gray-light;
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-weight: 300;
+  background-color: $gray-light;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.income {
+  color: green;
+  font-weight: 500;
+}
+
+.expense {
+  color: red;
+  font-weight: 500;
 }

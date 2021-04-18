@@ -22,7 +22,7 @@ export default function RecordsPage() {
   const handleSubmit = () => {
     if (recordsRef.current) {
       recordsRef.current.submitForm();
-      onClose();
+      // onClose();
     }
   };
 

@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from "react";
 import { Formik, Form } from "formik";
 import { RecordsFormValidation } from "components/Records/RecordsFormValidation";
-import { useToast } from "@chakra-ui/react";
+import { Radio, RadioGroup, useToast } from "@chakra-ui/react";
 import { createRecord } from "api/api";
 import { useAuthentication } from "hooks/useAuthentication";
 import { Flex, FlexItem, InputField, SelectField } from "components/Common";
@@ -24,17 +24,19 @@ export const RecordsForm = forwardRef(({ ...rest }, ref) => {
         category: {},
         value: "",
         description: "",
+        type: "",
       }}
       validationSchema={RecordsFormValidation}
       innerRef={ref}
       onSubmit={(data) => {
         createRecord({
           title: data.title,
-          date: data.date,
+          date: new Date(data.date),
           category: { name: data.category, color },
           userId: user.uid,
           value: data.value,
           description: data.description,
+          type: data.type,
         }).then(({ status, title, message }) => {
           toast({
             title,
@@ -51,7 +53,20 @@ export const RecordsForm = forwardRef(({ ...rest }, ref) => {
         return (
           <Form className="form">
             <div className="form__content">
-              <Flex fullWidth="true">
+              <RadioGroup
+                name="type"
+                id="type"
+                onChange={(value) => {setFieldValue("type", value)}}
+                defaultValue={values.type}
+              >
+                <Radio value="income">
+                  Income
+                </Radio>
+                <Radio value="expense">
+                  Expense
+                </Radio>
+              </RadioGroup>
+              <Flex fullWidth>
                 <FlexItem lg={"6"}>
                   <InputField name="title" label="Title" type="text" />
                   <SelectField
