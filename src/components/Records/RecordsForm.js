@@ -83,13 +83,15 @@ export const RecordsForm = forwardRef(({ ...rest }, ref) => {
                 </FlexItem>
                 <FlexItem lg={"6"}>
                   <InputField name="date" label="Date" type="date" />
-                  <InputField name="value" label="Value" type="number" />
-                  {/* <NumberFormat
+                  <NumberFormat
                     customInput={InputField}
                     name="value"
                     label="Value"
                     thousandSeparator={true}
-                  /> */}
+                    onChange={(e) => {
+                      setFieldValue("value", +(e.target.value.replace(/[,.]/gi, '')))
+                    }}
+                  />
                 </FlexItem>
                 <FlexItem lg={"12"}>
                   <InputField

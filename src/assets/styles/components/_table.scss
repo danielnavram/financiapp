@@ -16,6 +16,10 @@
     position: relative;
   }
 
+  & &__value {
+    text-align: right;
+  }
+
   tr {
     transition: all 0.3s ease;
     cursor: pointer;
