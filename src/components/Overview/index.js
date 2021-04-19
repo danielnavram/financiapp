@@ -1,27 +1,24 @@
-import React from "react";
-import { Card, Flex, FlexItem, BarChart } from "components/Common";
+import React, { useState } from "react";
+import { CardItem, CheckboxToggle, Flex, BarChart } from "components/Common";
 import { useRecords } from "hooks/useRecords";
-import { Loading } from "components/Status/Loading";
 import { format, differenceInMonths } from "date-fns";
-
-const CardItem = ({ title, children, loading }) => {
-  return (
-    <FlexItem lg={4} md={4} sm={2} xs={4}>
-      <Card title={title}>{loading ? <Loading /> : children}</Card>
-    </FlexItem>
-  );
-};
 
 export const Overview = () => {
   const { categories, types } = useRecords();
+  const [title, setTitle] = useState("expenses");
   let labels = [];
   let series = [];
   let allDates = [];
   let cashFlow = [];
   let loading = true;
+
   if (categories.length && Object.keys(types).length) {
-    labels = [...categories.map((item) => item.category)];
-    series = [...categories].map((item) => item.expenses);
+    labels = [...categories]
+      .filter((data) => data[title] > 0)
+      .map((data) => data.category);
+    series = [...categories]
+      .filter((data) => data[title] > 0)
+      .map((item) => item[title]);
 
     const expenseDates = [
       ...types.expenses
@@ -59,9 +56,14 @@ export const Overview = () => {
     loading = false;
   }
 
+  const handleChangeCheckbox = (e) => {
+    if (e.target.checked) return setTitle("incomes");
+    setTitle("expenses");
+  };
+
   return (
     <Flex fullWidth>
-      <CardItem title="Cashflow" loading={loading}>
+      <CardItem title="Cashflow Timeline" loading={loading}>
         <BarChart
           series={[{ data: cashFlow }]}
           labelChart={allDates.map((month) =>
@@ -73,7 +75,19 @@ export const Overview = () => {
       <CardItem title="Current Balance" loading={loading}>
         Another stuff goes here
       </CardItem>
-      <CardItem title="Cashflow Categories" loading={loading}>
+      <CardItem
+        title="Categories Behavior"
+        options={{
+          button: (
+            <CheckboxToggle
+              title={title}
+              name="type"
+              onChange={handleChangeCheckbox}
+            />
+          ),
+        }}
+        loading={loading}
+      >
         <BarChart series={[{ data: series }]} labelChart={labels} type="bar" />
       </CardItem>
     </Flex>
