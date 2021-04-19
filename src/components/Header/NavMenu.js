@@ -20,11 +20,11 @@ export const NavMenu = () => {
             Categories
           </NavLink>
         </li>
-        <li className="nav__item">
+        {/* <li className="nav__item">
           <NavLink className="nav__link" to="/budget">
             Budget
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
