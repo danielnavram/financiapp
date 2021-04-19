@@ -1,27 +1,43 @@
-import React from "react";
-import { Card, Flex, FlexItem, BarChart } from "components/Common";
+import React, { useState } from "react";
+import {
+  CardItem,
+  CheckboxToggle,
+  Flex,
+  FlexItem,
+  BarChart,
+  Icon,
+} from "components/Common";
 import { useRecords } from "hooks/useRecords";
-import { Loading } from "components/Status/Loading";
 import { format, differenceInMonths } from "date-fns";
-
-const CardItem = ({ title, children, loading }) => {
-  return (
-    <FlexItem lg={4} md={4} sm={2} xs={4}>
-      <Card title={title}>{loading ? <Loading /> : children}</Card>
-    </FlexItem>
-  );
-};
+import NumberFormat from "react-number-format";
 
 export const Overview = () => {
   const { categories, types } = useRecords();
+  const [title, setTitle] = useState("expenses");
   let labels = [];
   let series = [];
   let allDates = [];
   let cashFlow = [];
   let loading = true;
+  let incomes = [];
+  let expenses = [];
+  let currentBalance = 0;
+
   if (categories.length && Object.keys(types).length) {
-    labels = [...categories.map((item) => item.category)];
-    series = [...categories].map((item) => item.expenses);
+    labels = [...categories]
+      .filter((data) => data[title] > 0)
+      .map((data) => data.category);
+    series = [...categories]
+      .filter((data) => data[title] > 0)
+      .map((item) => item[title]);
+
+    incomes = [...categories]
+      .map((item) => item.incomes)
+      .reduce((acc, cur) => acc + cur, 0);
+    expenses = [...categories]
+      .map((item) => item.expenses)
+      .reduce((acc, cur) => acc + cur, 0);
+    currentBalance = incomes - expenses;
 
     const expenseDates = [
       ...types.expenses
@@ -59,9 +75,14 @@ export const Overview = () => {
     loading = false;
   }
 
+  const handleChangeCheckbox = (e) => {
+    if (e.target.checked) return setTitle("incomes");
+    setTitle("expenses");
+  };
+
   return (
     <Flex fullWidth>
-      <CardItem title="Cashflow" loading={loading}>
+      <CardItem title="Cashflow Timeline" loading={loading}>
         <BarChart
           series={[{ data: cashFlow }]}
           labelChart={allDates.map((month) =>
@@ -71,9 +92,35 @@ export const Overview = () => {
         />
       </CardItem>
       <CardItem title="Current Balance" loading={loading}>
-        Another stuff goes here
+        <Flex>
+          <FlexItem lg={6} md={6} sm={6} xs={4}>
+            <div className="current__content">
+              <Icon name="currency" className="current__icon" />
+              <NumberFormat
+                value={currentBalance}
+                className="current__value"
+                thousandSeparator={true}
+                displayType={"text"}
+                prefix={"$"}
+              />
+              <span>Millions</span>
+            </div>
+          </FlexItem>
+        </Flex>
       </CardItem>
-      <CardItem title="Cashflow Categories" loading={loading}>
+      <CardItem
+        title="Categories Behavior"
+        options={{
+          button: (
+            <CheckboxToggle
+              title={title}
+              name="type"
+              onChange={handleChangeCheckbox}
+            />
+          ),
+        }}
+        loading={loading}
+      >
         <BarChart series={[{ data: series }]} labelChart={labels} type="bar" />
       </CardItem>
     </Flex>
