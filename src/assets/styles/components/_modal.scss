@@ -6,8 +6,24 @@
     position: fixed;
     top: 20%;
     transform: translateX(-50%);
-    width: 30%;
     z-index: 1500;
+    width: 30%;
+    @include respond(xs) {
+        width: 100%;
+    }
+
+    @include respond(sm) {
+        width: 80%;
+    }
+
+    @include respond(md) {
+        width: 50%;
+    }
+
+    @include respond(lg) {
+        width: 40%;
+    }
+
     &__title {
         padding: rem(20) rem(25);
         font-size: rem(20);

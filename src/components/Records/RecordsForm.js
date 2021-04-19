@@ -67,7 +67,7 @@ export const RecordsForm = forwardRef(({ ...rest }, ref) => {
                 </Radio>
               </RadioGroup>
               <Flex fullWidth>
-                <FlexItem lg={"6"}>
+                <FlexItem lg={6} md={6} sm={12} xs={4}>
                   <InputField name="title" label="Title" type="text" />
                   <SelectField
                     type="text"
@@ -81,7 +81,7 @@ export const RecordsForm = forwardRef(({ ...rest }, ref) => {
                     value={values.category}
                   />
                 </FlexItem>
-                <FlexItem lg={"6"}>
+                <FlexItem lg={6} md={6} sm={12} xs={4}>
                   <InputField name="date" label="Date" type="date" />
                   <NumberFormat
                     customInput={InputField}

@@ -58,6 +58,7 @@ export default function RecordsPage() {
             onClose={onClose}
             title="New Record"
             handleSubmit={handleSubmit}
+            scrollBehavior="inside"
           >
             <RecordsForm ref={recordsRef} />
           </Modal>

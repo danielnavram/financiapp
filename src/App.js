@@ -4,6 +4,7 @@ import Routes from "components/Routes/Routes";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "components/Theme";
 import { RecordsContextProvider } from "context/RecordsContext";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   return (
