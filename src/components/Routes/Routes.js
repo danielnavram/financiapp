@@ -40,7 +40,7 @@ export default function Routes() {
         redirectUrl="/login"
         logged
       />
-      <Redirect path="*" to="/overview" />
+      <Redirect path="*" to="/login" />
     </Router>
   );
 }

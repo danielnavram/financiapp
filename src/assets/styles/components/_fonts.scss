@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-logout:before {
+  content: "\e90f";
+}
+.icon-percentage:before {
+  content: "\e910";
+}
+.icon-user:before {
+  content: "\e911";
+}
 .icon-bar-chart:before {
   content: "\e900";
 }

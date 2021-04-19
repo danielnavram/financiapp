@@ -22,21 +22,16 @@ export const Avatar = ({ url, alt }) => {
   };
 
   const options = [
-    { icon: <Icon name="trash" />, name: "Profile", link: "/profile" },
-    { icon: <Icon name="document" />, name: "Log out",  onClick: handleLogout },
+    { icon: <Icon name="user" />, name: "Profile", link: "/profile" },
+    { icon: <Icon name="logout" />, name: "Log out", onClick: handleLogout },
   ];
 
   return (
     <div className="avatar">
-      <DropdownMenu  
-        items={options}>
-        
-      
-      
-            <div className="avatar__image-container">
-              <img className="avatar__image" alt={alt} src={url} />
-            </div>
-        
+      <DropdownMenu items={options}>
+        <div className="avatar__image-container">
+          <img className="avatar__image" alt={alt} src={url} />
+        </div>
       </DropdownMenu>
     </div>
   );

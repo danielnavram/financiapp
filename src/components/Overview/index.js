@@ -22,6 +22,7 @@ export const Overview = () => {
   let incomes = [];
   let expenses = [];
   let currentBalance = 0;
+  let percentage = 0;
 
   if (categories.length && Object.keys(types).length) {
     labels = [...categories]
@@ -38,6 +39,7 @@ export const Overview = () => {
       .map((item) => item.expenses)
       .reduce((acc, cur) => acc + cur, 0);
     currentBalance = incomes - expenses;
+    percentage = (expenses / incomes) * 100;
 
     const expenseDates = [
       ...types.expenses
@@ -82,7 +84,7 @@ export const Overview = () => {
 
   return (
     <Flex fullWidth>
-      <CardItem title="Cashflow Timeline" loading={loading}>
+      <CardItem title="Timeline Cash Flow" loading={loading}>
         <BarChart
           series={[{ data: cashFlow }]}
           labelChart={allDates.map((month) =>
@@ -92,21 +94,38 @@ export const Overview = () => {
         />
       </CardItem>
       <CardItem title="Current Balance" loading={loading}>
-        <Flex>
-          <FlexItem lg={6} md={6} sm={6} xs={4}>
-            <div className="current__content">
-              <Icon name="currency" className="current__icon" />
-              <NumberFormat
-                value={currentBalance}
-                className="current__value"
-                thousandSeparator={true}
-                displayType={"text"}
-                prefix={"$"}
-              />
-              <span>Millions</span>
-            </div>
-          </FlexItem>
-        </Flex>
+        <div className="current">
+          <Flex spacebetween fullWidth>
+            <FlexItem lg={6} md={6} sm={6} xs={4}>
+              <div className="current__content">
+                <Icon name="money" className="current__icon" />
+                <div className="current__number">
+                  <NumberFormat
+                    value={currentBalance}
+                    className="current__value"
+                    thousandSeparator={true}
+                    displayType={"text"}
+                  />
+                  <span className="current__label">Balance</span>
+                </div>
+              </div>
+            </FlexItem>
+            <FlexItem lg={6} md={6} sm={6} xs={4}>
+              <div className="current__content">
+                <Icon name="percentage" className="current__icon" />
+                <div className="current__number">
+                  <NumberFormat
+                    value={percentage}
+                    className="current__value"
+                    displayType={"text"}
+                    decimalScale={2}
+                  />
+                  <span className="current__label">Expenses</span>
+                </div>
+              </div>
+            </FlexItem>
+          </Flex>
+        </div>
       </CardItem>
       <CardItem
         title="Categories Behavior"
