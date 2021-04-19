@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { CardItem, CheckboxToggle, Flex, BarChart } from "components/Common";
+import {
+  CardItem,
+  CheckboxToggle,
+  Flex,
+  FlexItem,
+  BarChart,
+  Icon,
+} from "components/Common";
 import { useRecords } from "hooks/useRecords";
 import { format, differenceInMonths } from "date-fns";
+import NumberFormat from "react-number-format";
 
 export const Overview = () => {
   const { categories, types } = useRecords();
@@ -11,6 +19,9 @@ export const Overview = () => {
   let allDates = [];
   let cashFlow = [];
   let loading = true;
+  let incomes = [];
+  let expenses = [];
+  let currentBalance = 0;
 
   if (categories.length && Object.keys(types).length) {
     labels = [...categories]
@@ -19,6 +30,14 @@ export const Overview = () => {
     series = [...categories]
       .filter((data) => data[title] > 0)
       .map((item) => item[title]);
+
+    incomes = [...categories]
+      .map((item) => item.incomes)
+      .reduce((acc, cur) => acc + cur, 0);
+    expenses = [...categories]
+      .map((item) => item.expenses)
+      .reduce((acc, cur) => acc + cur, 0);
+    currentBalance = incomes - expenses;
 
     const expenseDates = [
       ...types.expenses
@@ -73,7 +92,21 @@ export const Overview = () => {
         />
       </CardItem>
       <CardItem title="Current Balance" loading={loading}>
-        Another stuff goes here
+        <Flex>
+          <FlexItem lg={6} md={6} sm={6} xs={4}>
+            <div className="current__content">
+              <Icon name="currency" className="current__icon" />
+              <NumberFormat
+                value={currentBalance}
+                className="current__value"
+                thousandSeparator={true}
+                displayType={"text"}
+                prefix={"$"}
+              />
+              <span>Millions</span>
+            </div>
+          </FlexItem>
+        </Flex>
       </CardItem>
       <CardItem
         title="Categories Behavior"
