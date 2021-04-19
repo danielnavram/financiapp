@@ -3,6 +3,22 @@
   margin: rem(100) auto;
   max-width: 30%;
 
+  @include respond(xs) {
+    max-width: 100%;
+  }
+
+  @include respond(sm) {
+    max-width: 80%;
+  }
+
+  @include respond(md) {
+    max-width: 60%;
+  }
+
+  @include respond(lg) {
+    max-width: 40%;
+  }
+
   button {
     display: block;
     margin: 0 auto rem(20);
