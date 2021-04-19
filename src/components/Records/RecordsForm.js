@@ -4,7 +4,13 @@ import { RecordsFormValidation } from "components/Records/RecordsFormValidation"
 import { Radio, RadioGroup, useToast } from "@chakra-ui/react";
 import { createRecord } from "api/api";
 import { useAuthentication } from "hooks/useAuthentication";
-import { Flex, FlexItem, InputField, SelectField } from "components/Common";
+import {
+  Flex,
+  FlexItem,
+  InputField,
+  SelectField,
+  DateField,
+} from "components/Common";
 import { useCategoriesList } from "hooks/useCategoriesList";
 import NumberFormat from "react-number-format";
 
@@ -56,18 +62,16 @@ export const RecordsForm = forwardRef(({ ...rest }, ref) => {
               <RadioGroup
                 name="type"
                 id="type"
-                onChange={(value) => {setFieldValue("type", value)}}
+                onChange={(value) => {
+                  setFieldValue("type", value);
+                }}
                 defaultValue={values.type}
               >
-                <Radio value="income">
-                  Income
-                </Radio>
-                <Radio value="expense">
-                  Expense
-                </Radio>
+                <Radio value="income">Income</Radio>
+                <Radio value="expense">Expense</Radio>
               </RadioGroup>
               <Flex fullWidth>
-                <FlexItem lg={6} md={6} sm={12} xs={4}>
+                <FlexItem lg={"6"}>
                   <InputField name="title" label="Title" type="text" />
                   <SelectField
                     type="text"
@@ -81,15 +85,24 @@ export const RecordsForm = forwardRef(({ ...rest }, ref) => {
                     value={values.category}
                   />
                 </FlexItem>
-                <FlexItem lg={6} md={6} sm={12} xs={4}>
-                  <InputField name="date" label="Date" type="date" />
+                <FlexItem lg={"6"}>
+                  <DateField
+                    name="date"
+                    label="Date"
+                    onChange={(dateValue) => {
+                      setFieldValue("date", dateValue);
+                    }}
+                  />
                   <NumberFormat
                     customInput={InputField}
                     name="value"
                     label="Value"
                     thousandSeparator={true}
                     onChange={(e) => {
-                      setFieldValue("value", +(e.target.value.replace(/[,.]/gi, '')))
+                      setFieldValue(
+                        "value",
+                        +e.target.value.replace(/[,.]/gi, "")
+                      );
                     }}
                   />
                 </FlexItem>

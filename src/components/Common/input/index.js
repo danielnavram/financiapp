@@ -1,13 +1,15 @@
 import React from "react";
 import Select from "react-select";
 import { Icon } from "components/Common";
-import { useField } from "formik";
+import { useField, useFormikContext } from "formik";
 import {
   FormControl,
   InputLeftElement,
   FormLabel,
   Input as InputChakra,
 } from "@chakra-ui/react";
+import DatePicker from "react-datepicker";
+import { addDays } from "date-fns";
 
 export const InputField = ({
   name,
@@ -143,7 +145,9 @@ export const SelectField = ({
 export const CheckboxToggle = ({ name, title, onChange }) => {
   return (
     <div className="checkbox">
-      <label className="checkbox__label" htmlFor={name}>{title}</label>
+      <label className="checkbox__label" htmlFor={name}>
+        {title}
+      </label>
       <input
         className="checkbox__input"
         type="checkbox"
@@ -152,5 +156,29 @@ export const CheckboxToggle = ({ name, title, onChange }) => {
         onChange={onChange}
       />
     </div>
+  );
+};
+
+export const DateField = ({ name, label, type, iconName, onChange, rest }) => {
+  const { setFieldValue } = useFormikContext();
+  const [field, meta] = useField(name);
+  return (
+    <FormControl
+      className="form__control"
+      id={name}
+      isInvalid={meta.error && meta.touched}
+    >
+      <FormLabel className="form__label">{label}</FormLabel>
+      <InputLeftElement children={<Icon name={iconName} />} />
+      <DatePicker
+        {...field}
+        {...rest}
+        maxDate={addDays(new Date(), 4)}
+        selected={(field.value && new Date(field.value)) || null}
+        onChange={(val) => {
+          setFieldValue(name, val);
+        }}
+      />
+    </FormControl>
   );
 };
